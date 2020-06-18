@@ -1,44 +1,14 @@
 import React, { useState, useEffect } from "react";
-import logo from "../logo.svg";
-import "../App.css";
+import "../style.css";
+import LoginScreen from "./LoginScreen";
+import LoggedIn from "./LoggedIn";
+import { token } from "../spotify/index";
+
+console.log(token);
 
 function App() {
-  const [state, setState] = useState("");
-
-  async function callBackendAPI() {
-    const response = await fetch("/express_backend");
-    const body = await response.json();
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
-    return body;
-  }
-
-  useEffect(() => {
-    callBackendAPI()
-      .then((res) => setState(res.express))
-      .catch((err) => console.error(err));
-  });
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <p className="App-intro">{state}</p>
-    </div>
-  );
+  const [state, setState] = useState(token);
+  return <div>{token ? <LoggedIn /> : <LoginScreen />}</div>;
 }
 
 export default App;
