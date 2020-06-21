@@ -74,3 +74,25 @@ export const logout = () => {
   window.localStorage.removeItem("spotify_refresh_token");
   window.location.reload();
 };
+
+const headers = {
+  Authorization: `Bearer ${token}`,
+  "Content-Type": "application/json",
+};
+
+export const getUser = () =>
+  axios.get("https://api.spotify.com/v1/me", { headers });
+
+export const getCurrentTrack = () =>
+  axios.get("https://api.spotify.com/v1/me/player/currently-playing", {
+    headers,
+  });
+
+export const getProfileInfo = () => {
+  axios.all([getUser(), getCurrentTrack()]).then(
+    axios.spread((user, player) => {
+      // console.log(user.data);
+      // console.log(player);
+    })
+  );
+};

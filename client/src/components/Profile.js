@@ -1,15 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import LoadingIndicator from "./LoadingIndicator";
+import ProfileUserInfo from "./ProfileUserInfo";
+import user from "../samp/userData.json";
+import { getProfileInfo, getCurrentTrack } from "../spotify/index";
+import styled from "styled-components/macro";
+
+// getCurrentTrack().then((res) => console.log(JSON.stringify(res)));
+const SectionTitle = styled.h3`
+  margin: 5px 0px 0px 50px;
+`;
+
+const UserProfile = styled.div`
+  width: 100%;
+`;
+
+const Player = styled.div`
+  height: 200px;
+  width: 90%;
+  margin: 15px 50px 20px 50px;
+  background-color: #282828;
+  border-radius: 30px;
+`;
 
 const Profile = () => {
-  //   const client_id = "f07ad09fc74d4e03a045e09717fb51ad";
-  //   const redirect_uri = "http://localhost:1234/";
-  //   const data = await fetch(
-  //     `https://accounts.spotify.com/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}`
-  //   );
-  return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+  // const [user, setUser] = useState(null);
+
+  // async function getUserData() {
+  //   const userData = await getUser();
+  //   setUser(userData);
+  // }
+
+  // useEffect(() => {
+  //   // getUserData();
+  //   getCurrentTrack().then((res) => res.data);
+  // });
+  return user ? (
+    <UserProfile>
+      <ProfileUserInfo user={user} />
+      <a className="styledLink" href="#">
+        <SectionTitle>Current playing</SectionTitle>
+      </a>
+      <Player></Player>
+    </UserProfile>
+  ) : (
+    <LoadingIndicator />
   );
 };
 

@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import "../style.css";
 import LoginScreen from "./LoginScreen";
 import LoggedIn from "./LoggedIn";
 import { token } from "../spotify/index";
-
-console.log(token);
+import GlobalStyle from "../style/GlobalStyle";
 
 function App() {
   const [state, setState] = useState(token);
-  return <div>{token ? <LoggedIn /> : <LoginScreen />}</div>;
+  return (
+    <div>
+      <GlobalStyle />
+      {token ? <LoggedIn /> : <LoginScreen />}
+    </div>
+  );
 }
 
 export default App;

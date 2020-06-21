@@ -26,17 +26,9 @@ app.get("/", function (req, res) {
 });
 
 app.get("/login", (req, res) => {
-  const scope = [
-    "user-read-email",
-    "user-read-private",
-    "user-library-read",
-    "user-top-read",
-    "user-read-currently-playing",
-    "playlist-read-private",
-    "user-follow-read",
-    "user-read-recently-played",
-    "user-follow-modify",
-  ];
+  const scope =
+    "user-read-private user-read-email user-read-recently-played user-top-read user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-public user-library-read user-read-currently-playing user-modify-playback-state";
+
   res.redirect(
     `https://accounts.spotify.com/authorize?${querystring.stringify({
       client_id: client_id,
