@@ -22,7 +22,6 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${colors.bodygrey};
         margin: 0px;
         height: 100vh;
-        font-weight: 700;
         font-size: ${fontSize.base};
         line-height: 20px;
         letter-spacing: 0.015em;
@@ -39,14 +38,14 @@ const GlobalStyle = createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-weight: 700;
-        letter-spacing: -0.04em;
         color: ${colors.white};
+        margin: 0px;
     }
 
     .title {
         font-size: ${fontSize.title};
         font-weight: 900;
+        letter-spacing: -.04em;
         &:hover {
             color: ${colors.green};
             text-decoration: none;
@@ -64,6 +63,18 @@ const GlobalStyle = createGlobalStyle`
             text-decoration: underline;
             text-decoration-color: ${colors.white};
         }
+    }
+
+    button {
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        border-radius: 30px;
+        letter-spacing: 1.76px;
     }
 `;
 

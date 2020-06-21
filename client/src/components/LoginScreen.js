@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
+import theme from "../style/theme";
+const { colors } = theme;
 // const LOGIN_URI =
 
 const LoginScreenStyle = styled.div`
@@ -15,9 +17,7 @@ const LoginHeading = styled.h1`
 `;
 
 const LoginButton = styled.button`
-  background-color: #1db954;
-  color: #fcfcfc;
-  border-radius: 30px;
+  background-color: ${colors.green};
   padding: 10px 30px;
   margin-top: 20px;
 `;
@@ -31,9 +31,9 @@ const LoginScreen = () => {
     <LoginScreenStyle>
       <LoginHeading> Welcome to Spotify Stats</LoginHeading>
       <a href="http://localhost:5000/login">
-        <button className="btn LoginButton">
+        <LoginButton>
           <h3>LOGIN TO SPOTIFY </h3>
-        </button>
+        </LoginButton>
       </a>
     </LoginScreenStyle>
   );

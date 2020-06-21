@@ -4,10 +4,15 @@ import ProfileUserInfo from "./ProfileUserInfo";
 import user from "../samp/userData.json";
 import { getProfileInfo, getCurrentTrack } from "../spotify/index";
 import styled from "styled-components/macro";
+import theme from "../style/theme";
+const { colors, fontSize, spacing } = theme;
 
 // getCurrentTrack().then((res) => console.log(JSON.stringify(res)));
-const SectionTitle = styled.h3`
-  margin: 5px 0px 0px 50px;
+const SectionTitle = styled.span`
+  margin-left: ${spacing.xxl};
+  margin-top: ${spacing.base};
+  font-size: ${fontSize.l};
+  color: ${colors.white};
 `;
 
 const UserProfile = styled.div`
@@ -16,10 +21,9 @@ const UserProfile = styled.div`
 
 const Player = styled.div`
   height: 200px;
-  width: 90%;
-  margin: 15px 50px 20px 50px;
-  background-color: #282828;
-  border-radius: 30px;
+  margin: ${spacing.base} ${spacing.xxl};
+  background-color: ${colors.backgroundgrey};
+  border-radius: 16px;
 `;
 
 const Profile = () => {

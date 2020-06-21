@@ -3,6 +3,8 @@ import NavbarList from "./NavbarList";
 import Spotify from "./icons/Spotify";
 // import { Link } from "@reach/router";
 import styled from "styled-components/macro";
+import theme from "../style/theme";
+const { fontSize } = theme;
 
 const NavDiv = styled.div`
   color: #ababab;
@@ -12,6 +14,7 @@ const NavDiv = styled.div`
   height: 100vh;
   width: 15%;
   letter-spacing: normal;
+  font-size: ${fontSize.m};
 `;
 
 const NavNav = styled.nav`

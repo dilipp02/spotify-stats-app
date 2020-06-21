@@ -11,17 +11,18 @@ const theme = {
   fontSize: {
     base: "16px",
     sm: "12px",
+    m: "14px",
+    l: "24px",
     title: "96px",
   },
 
   spacing: {
-    two: "2px",
-    four: "4px",
-    eight: "8px",
-    twelve: "12px",
-    sixteen: "16px",
-    twentyFour: "24px",
-    ThirtyTwo: "32px",
+    base: "16px",
+    s: "4px",
+    m: "8px",
+    l: "12px",
+    xl: "24px",
+    xxl: "32px",
   },
 };
 
