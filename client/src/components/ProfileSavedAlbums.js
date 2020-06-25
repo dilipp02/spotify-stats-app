@@ -34,26 +34,23 @@ const ArtistNames = styled.span`
   font-size: ${fontSize.sm};
 `;
 
-const ProfileSavedTracks = (props) => {
+const ProfileSavedAlbums = (props) => {
   return (
     <SavedTracks>
-      <SectionHeading heading="Saved Tracks" />
-      {props.tracks ? (
-        props.tracks.items.slice(0, 7).map((objTrack) => (
-          <SectionSong key={objTrack.track.name.replace(" ", "").toLowerCase()}>
-            <img
-              src={objTrack.track.album.images[1].url}
-              alt={objTrack.track.name}
-            />
+      <SectionHeading heading="Saved Albums" />
+      {props.albums ? (
+        props.albums.items.slice(0, 7).map((objTrack) => (
+          <SectionSong key={objTrack.album.name.replace(" ", "").toLowerCase()}>
+            <img src={objTrack.album.images[1].url} alt={objTrack.album.name} />
             <SectionSongArtists>
               <a
-                href={objTrack.track.external_urls.spotify}
+                href={objTrack.album.external_urls.spotify}
                 className="styledLink"
                 target="_blank"
               >
-                <h6>{objTrack.track.name}</h6>
+                <h6>{objTrack.album.name}</h6>
               </a>
-              {objTrack.track.artists.map((objArtist) => (
+              {objTrack.album.artists.map((objArtist) => (
                 <a
                   key={objArtist.name.replace(" ", "").toLowerCase()}
                   href={objArtist.external_urls.spotify}
@@ -73,4 +70,4 @@ const ProfileSavedTracks = (props) => {
   );
 };
 
-export default ProfileSavedTracks;
+export default ProfileSavedAlbums;

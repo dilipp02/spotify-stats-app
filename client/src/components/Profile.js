@@ -3,18 +3,22 @@ import LoadingIndicator from "./LoadingIndicator";
 import ProfileUserInfo from "./ProfileUserInfo";
 import user from "../samp/userData.json";
 import savedtracks from "../samp/savedTracks.json";
+import savedalbums from "../samp/savedAlbums.json";
+import savedshows from "../samp/savedShows.json";
 // import player from "../samp/currentPlayer.json";
-import axios from "axios";
-import {
-  getUser,
-  getSavedTracks,
-  getSavedAlbums,
-  getSavedShows,
-} from "../spotify/index";
+// import axios from "axios";
+// import {
+//   getUser,
+//   getSavedTracks,
+//   getSavedAlbums,
+//   getSavedShows,
+// } from "../spotify/index";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 import Player from "./Player";
 import ProfileSavedTracks from "./ProfileSavedTracks";
+import ProfileSavedAlbums from "./ProfileSavedAlbums";
+import ProfileSavedShows from "./ProfileSavedShows";
 
 const { colors, fontSize, spacing } = theme;
 
@@ -45,7 +49,7 @@ const LoaderStyle = styled.div`
 `;
 
 const Profile = () => {
-  // getSavedTracks().then((res) => console.log(JSON.stringify(res)));
+  // getSavedShows().then((res) => console.log(JSON.stringify(res)));
   // const [user, setUser] = useState(null);
 
   // async function getProfileData() {
@@ -75,7 +79,9 @@ const Profile = () => {
           <Player />
         </PlayerStyle>
       </PlayerDiv>
-      <ProfileSavedTracks />
+      <ProfileSavedTracks tracks={savedtracks.data} />
+      <ProfileSavedAlbums albums={savedalbums.data} />
+      <ProfileSavedShows shows={savedshows.data} />
     </UserProfile>
   ) : (
     <LoaderStyle>

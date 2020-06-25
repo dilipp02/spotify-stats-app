@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import Profile from "./Profile";
 import styled from "styled-components/macro";
+import { Router } from "@reach/router";
+import Tracks from "./Tracks";
 
 const AppDiv = styled.div`
   display: flex;
@@ -17,7 +19,10 @@ const LoggedIn = () => {
     <AppDiv>
       <Navbar />
       <Content>
-        <Profile />
+        <Router>
+          <Profile path="/" />
+          <Tracks path="/tracks" />
+        </Router>
       </Content>
     </AppDiv>
   );

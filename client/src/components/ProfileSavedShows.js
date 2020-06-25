@@ -21,6 +21,7 @@ const SectionSong = styled.div`
   img {
     max-height: 100%;
     width: 100%;
+    border-radius: ${spacing.base};
   }
 `;
 
@@ -29,40 +30,22 @@ const SectionSongArtists = styled.div`
   margin-top: ${spacing.base};
 `;
 
-const ArtistNames = styled.span`
-  color: ${colors.fontgrey};
-  font-size: ${fontSize.sm};
-`;
-
-const ProfileSavedTracks = (props) => {
+const ProfileSavedShows = (props) => {
   return (
     <SavedTracks>
-      <SectionHeading heading="Saved Tracks" />
-      {props.tracks ? (
-        props.tracks.items.slice(0, 7).map((objTrack) => (
-          <SectionSong key={objTrack.track.name.replace(" ", "").toLowerCase()}>
-            <img
-              src={objTrack.track.album.images[1].url}
-              alt={objTrack.track.name}
-            />
+      <SectionHeading heading="Saved Shows" />
+      {props.shows ? (
+        props.shows.items.slice(0, 7).map((objTrack) => (
+          <SectionSong key={objTrack.show.name.replace(" ", "").toLowerCase()}>
+            <img src={objTrack.show.images[1].url} alt={objTrack.show.name} />
             <SectionSongArtists>
               <a
-                href={objTrack.track.external_urls.spotify}
+                href={objTrack.show.external_urls.spotify}
                 className="styledLink"
                 target="_blank"
               >
-                <h6>{objTrack.track.name}</h6>
+                <h6>{objTrack.show.name}</h6>
               </a>
-              {objTrack.track.artists.map((objArtist) => (
-                <a
-                  key={objArtist.name.replace(" ", "").toLowerCase()}
-                  href={objArtist.external_urls.spotify}
-                  className="styledLink"
-                  target="_blank"
-                >
-                  <ArtistNames>{objArtist.name}, </ArtistNames>
-                </a>
-              ))}
             </SectionSongArtists>
           </SectionSong>
         ))
@@ -73,4 +56,4 @@ const ProfileSavedTracks = (props) => {
   );
 };
 
-export default ProfileSavedTracks;
+export default ProfileSavedShows;

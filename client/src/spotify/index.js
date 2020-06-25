@@ -95,4 +95,4 @@ export const getSavedAlbums = () =>
   axios.get("https://api.spotify.com/v1/me/albums?limit=50", { headers });
 
 export const getSavedShows = () =>
-  axios.get("https://api.spotify.com/v1/me/tracks?limit=50", { headers });
+  axios.get("https://api.spotify.com/v1/me/shows?limit=50", { headers });

@@ -50,8 +50,8 @@ const Navbar = () => {
           <NavbarList name="Profile" logoClass="fas fa-user" />
           <NavbarList name="Tracks" logoClass="fas fa-compact-disc" />
           <NavbarList name="Artists" logoClass="fas fa-microphone-alt" />
-          <NavbarList name="Recent" logoClass="fas fa-music" />
           <NavbarList name="Playlists" logoClass="fas fa-file-audio" />
+          <NavbarList name="Albums & Shows" logoClass="fas fa-music" />
         </NavbarItems>
       </NavNav>
     </NavDiv>
