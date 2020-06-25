@@ -20,6 +20,9 @@ const LoginButton = styled.button`
   background-color: ${colors.green};
   padding: 10px 30px;
   margin-top: 20px;
+  &:hover {
+    background-color: ${colors.highlightgreen};
+  }
 `;
 
 const LoginScreen = () => {

@@ -3,17 +3,17 @@ import Loader from "react-loader-spinner";
 import styled from "styled-components/macro";
 
 const LoaderStyle = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const LoadingIndicator = () => {
+const LoadingIndicator = (props) => {
   return (
     <LoaderStyle>
-      <Loader type="Bars" color="#1db954" height={100} width={100} />
+      <Loader type={props.type} color="#1db954" height={50} width={50} />
     </LoaderStyle>
   );
 };

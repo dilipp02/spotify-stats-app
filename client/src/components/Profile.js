@@ -2,52 +2,85 @@ import React, { useEffect, useState } from "react";
 import LoadingIndicator from "./LoadingIndicator";
 import ProfileUserInfo from "./ProfileUserInfo";
 import user from "../samp/userData.json";
-import { getProfileInfo, getCurrentTrack } from "../spotify/index";
+import savedtracks from "../samp/savedTracks.json";
+// import player from "../samp/currentPlayer.json";
+import axios from "axios";
+import {
+  getUser,
+  getSavedTracks,
+  getSavedAlbums,
+  getSavedShows,
+} from "../spotify/index";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
+import Player from "./Player";
+import ProfileSavedTracks from "./ProfileSavedTracks";
+
 const { colors, fontSize, spacing } = theme;
 
 // getCurrentTrack().then((res) => console.log(JSON.stringify(res)));
-const SectionTitle = styled.span`
-  margin-left: ${spacing.xxl};
-  margin-top: ${spacing.base};
-  font-size: ${fontSize.l};
-  color: ${colors.white};
+const SectionTitle = styled.h4`
+  display: inline;
 `;
 
 const UserProfile = styled.div`
   width: 100%;
 `;
 
-const Player = styled.div`
-  height: 200px;
+const PlayerDiv = styled.div`
   margin: ${spacing.base} ${spacing.xxl};
+`;
+
+const PlayerStyle = styled.div`
+  height: 150px;
+  margin: ${spacing.base} 0px ${spacing.xxl} 0px;
   background-color: ${colors.backgroundgrey};
   border-radius: 16px;
+  padding: ${spacing.base};
+`;
+
+const LoaderStyle = styled.div`
+  height: 100vh;
+  width: 100%;
 `;
 
 const Profile = () => {
+  // getSavedTracks().then((res) => console.log(JSON.stringify(res)));
   // const [user, setUser] = useState(null);
 
-  // async function getUserData() {
-  //   const userData = await getUser();
-  //   setUser(userData);
+  // async function getProfileData() {
+  //   axios.all([getUser()]).then(
+  //     axios.spread((user) => {
+  //       setUser(user.data);
+  //     })
+  //   );
+  // }
+
+  // async function getProfileData() {
+  //   getCurrentTrack().then((res) => console.log(res));
   // }
 
   // useEffect(() => {
-  //   // getUserData();
-  //   getCurrentTrack().then((res) => res.data);
-  // });
+  //   getProfileData();
+  // }, [setUser]);
+
   return user ? (
     <UserProfile>
       <ProfileUserInfo user={user} />
-      <a className="styledLink" href="#">
-        <SectionTitle>Current playing</SectionTitle>
-      </a>
-      <Player></Player>
+      <PlayerDiv>
+        <a className="styledLink" href="#">
+          <SectionTitle>Current playing</SectionTitle>
+        </a>
+        <PlayerStyle>
+          <Player />
+        </PlayerStyle>
+      </PlayerDiv>
+      <ProfileSavedTracks />
     </UserProfile>
   ) : (
-    <LoadingIndicator />
+    <LoaderStyle>
+      <LoadingIndicator type="Audio" />
+    </LoaderStyle>
   );
 };
 

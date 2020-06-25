@@ -21,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Circular Std';
         background-color: ${colors.bodygrey};
         margin: 0px;
-        height: 100vh;
+        min-height: 100vh;
         font-size: ${fontSize.base};
         line-height: 20px;
         letter-spacing: 0.015em;
@@ -52,6 +52,10 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    a {
+        color: ${colors.white};
+    }
+
     a.unStyledLink {
         :hover {
             text-decoration: none;
@@ -60,6 +64,7 @@ const GlobalStyle = createGlobalStyle`
 
     a.styledLink {
         &:hover {
+            color: ${colors.white};
             text-decoration: underline;
             text-decoration-color: ${colors.white};
         }

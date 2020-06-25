@@ -88,11 +88,11 @@ export const getCurrentTrack = () =>
     headers,
   });
 
-export const getProfileInfo = () => {
-  axios.all([getUser(), getCurrentTrack()]).then(
-    axios.spread((user, player) => {
-      // console.log(user.data);
-      // console.log(player);
-    })
-  );
-};
+export const getSavedTracks = () =>
+  axios.get("https://api.spotify.com/v1/me/tracks?limit=50", { headers });
+
+export const getSavedAlbums = () =>
+  axios.get("https://api.spotify.com/v1/me/albums?limit=50", { headers });
+
+export const getSavedShows = () =>
+  axios.get("https://api.spotify.com/v1/me/tracks?limit=50", { headers });

@@ -12,9 +12,10 @@ const NavDiv = styled.div`
   align-items: center;
   background-color: #040404;
   height: 100vh;
-  width: 15%;
+  width: 200px;
   letter-spacing: normal;
   font-size: ${fontSize.m};
+  position: fixed;
 `;
 
 const NavNav = styled.nav`

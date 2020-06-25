@@ -7,11 +7,18 @@ const AppDiv = styled.div`
   display: flex;
 `;
 
+const Content = styled.div`
+  padding-left: 200px;
+  width: 100%;
+`;
+
 const LoggedIn = () => {
   return (
     <AppDiv>
       <Navbar />
-      <Profile />
+      <Content>
+        <Profile />
+      </Content>
     </AppDiv>
   );
 };
