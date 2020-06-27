@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
         margin: 0px;
         min-height: 100vh;
         font-size: ${fontSize.base};
-        line-height: 20px;
         letter-spacing: 0.015em;
         color: ${colors.fontgrey};
     }
@@ -40,6 +39,14 @@ const GlobalStyle = createGlobalStyle`
     h6 {
         color: ${colors.white};
         margin: 0px;
+        font-weight: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    h2 {
+        display: inline;
     }
 
     .title {
@@ -53,7 +60,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     a {
-        color: ${colors.white};
+        text-decoration: none;
+        background-color: transparent;
     }
 
     a.unStyledLink {
@@ -80,6 +88,7 @@ const GlobalStyle = createGlobalStyle`
         transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
         border-radius: 30px;
         letter-spacing: 1.76px;
+        cursor: pointer;
     }
 `;
 

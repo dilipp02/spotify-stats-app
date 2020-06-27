@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 
-const { colors, fontSize, spacing } = theme;
-
-const SectionTitle = styled.h4`
-  display: inline;
-`;
+const { colors, fontSize } = theme;
 
 const SectionHeadingStyle = styled.div`
   grid-column: 1/-1;
@@ -25,7 +21,7 @@ const SectionHeading = (props) => {
   return (
     <SectionHeadingStyle>
       <a className="styledLink" href="#">
-        <SectionTitle>{props.heading}</SectionTitle>
+        <h2>{props.heading}</h2>
       </a>
       <a className="styledLink" href="#">
         <SeeAllLink>SEE ALL</SeeAllLink>

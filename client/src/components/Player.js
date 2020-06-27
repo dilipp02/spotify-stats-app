@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components/macro";
-import { getCurrentTrack } from "../spotify/index";
+// import { getCurrentTrack } from "../spotify/index";
 import LoadingIndicator from "./LoadingIndicator";
 import player from "../samp/currentPlayer.json";
 import theme from "../style/theme";
-const { colors, fontSize, spacing } = theme;
+const { colors } = theme;
 
 const NoPlayer = styled.div`
   height: 100%;
@@ -60,6 +60,7 @@ const Player = () => {
               href={player.data.item.external_urls.spotify}
               className="styledLink"
               target="_blank"
+              rel="noreferrer"
             >
               <SectionTitle>{player.data.item.name}</SectionTitle>
             </a>
@@ -70,6 +71,7 @@ const Player = () => {
                   href={obj.external_urls.spotify}
                   className="styledLink"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <ArtistNames>{obj.name}, </ArtistNames>
                 </a>

@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
 import axios from "axios";
 import { getHashParams } from "../utils";
 

@@ -1,13 +1,13 @@
 import React from "react";
-import NavbarList from "./NavbarList";
 import Spotify from "./icons/Spotify";
 // import { Link } from "@reach/router";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
-const { fontSize } = theme;
+import { Link } from "@reach/router";
+
+const { colors, fontSize } = theme;
 
 const NavDiv = styled.div`
-  color: #ababab;
   display: flex;
   align-items: center;
   background-color: #040404;
@@ -34,9 +34,32 @@ const NavbarItems = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  height: 60%;
+  height: 65%;
   align-items: center;
-  padding-left: 0px;
+  padding: 0px 8px;
+`;
+
+const NavbarItem = styled(Link)`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0px;
+  color: ${colors.fontgrey};
+  &:hover {
+    color: #fcfcfc;
+  }
+  &:active {
+    color: #fcfcfc;
+    background-color: #282828;
+    border-radius: 4px;
+  }
+`;
+
+const NavbarIcon = styled.span`
+  margin-right: 20px;
 `;
 
 const Navbar = () => {
@@ -44,14 +67,51 @@ const Navbar = () => {
     <NavDiv>
       <NavNav>
         <SpotifyLogo>
-          <Spotify />
+          <Link to="/">
+            <Spotify />
+          </Link>
         </SpotifyLogo>
         <NavbarItems>
-          <NavbarList name="Profile" logoClass="fas fa-user" />
-          <NavbarList name="Tracks" logoClass="fas fa-compact-disc" />
-          <NavbarList name="Artists" logoClass="fas fa-microphone-alt" />
-          <NavbarList name="Playlists" logoClass="fas fa-file-audio" />
-          <NavbarList name="Albums & Shows" logoClass="fas fa-music" />
+          <NavbarItem to="/">
+            <span>
+              <NavbarIcon>
+                <i className="fas fa-user"></i>
+              </NavbarIcon>
+              Profile
+            </span>
+          </NavbarItem>
+          <NavbarItem to="/tracks">
+            <span>
+              <NavbarIcon>
+                <i className="fas fa-compact-disc"></i>
+              </NavbarIcon>
+              Tracks
+            </span>
+          </NavbarItem>
+          <NavbarItem to="/">
+            <span>
+              <NavbarIcon>
+                <i className="fas fa-microphone-alt"></i>
+              </NavbarIcon>
+              Artists
+            </span>
+          </NavbarItem>
+          <NavbarItem to="/">
+            <span>
+              <NavbarIcon>
+                <i className="fas fa-file-audio"></i>
+              </NavbarIcon>
+              Playlists
+            </span>
+          </NavbarItem>
+          <NavbarItem to="/">
+            <span>
+              <NavbarIcon>
+                <i className="fas fa-music"></i>
+              </NavbarIcon>
+              Albums & Shows
+            </span>
+          </NavbarItem>
         </NavbarItems>
       </NavNav>
     </NavDiv>

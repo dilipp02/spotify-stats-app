@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LoadingIndicator from "./LoadingIndicator";
 import ProfileUserInfo from "./ProfileUserInfo";
 import user from "../samp/userData.json";
@@ -20,12 +20,7 @@ import ProfileSavedTracks from "./ProfileSavedTracks";
 import ProfileSavedAlbums from "./ProfileSavedAlbums";
 import ProfileSavedShows from "./ProfileSavedShows";
 
-const { colors, fontSize, spacing } = theme;
-
-// getCurrentTrack().then((res) => console.log(JSON.stringify(res)));
-const SectionTitle = styled.h4`
-  display: inline;
-`;
+const { colors, spacing } = theme;
 
 const UserProfile = styled.div`
   width: 100%;
@@ -41,11 +36,6 @@ const PlayerStyle = styled.div`
   background-color: ${colors.backgroundgrey};
   border-radius: 16px;
   padding: ${spacing.base};
-`;
-
-const LoaderStyle = styled.div`
-  height: 100vh;
-  width: 100%;
 `;
 
 const Profile = () => {
@@ -73,7 +63,7 @@ const Profile = () => {
       <ProfileUserInfo user={user} />
       <PlayerDiv>
         <a className="styledLink" href="#">
-          <SectionTitle>Current playing</SectionTitle>
+          <h2>Current playing</h2>
         </a>
         <PlayerStyle>
           <Player />
@@ -84,9 +74,7 @@ const Profile = () => {
       <ProfileSavedShows shows={savedshows.data} />
     </UserProfile>
   ) : (
-    <LoaderStyle>
-      <LoadingIndicator type="Audio" />
-    </LoaderStyle>
+    <LoadingIndicator type="Audio" />
   );
 };
 

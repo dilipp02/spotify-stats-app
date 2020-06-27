@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Get the query params off the window's URL
 export const getHashParams = () => {
   const hashParams = {};
@@ -82,6 +83,7 @@ export const formatWithCommas = (n) =>
 export const catchErrors = (fn) => {
   return function (...args) {
     return fn(...args).catch((err) => {
+      // eslint-disable-next-line no-console
       console.error(err);
     });
   };

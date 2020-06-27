@@ -14,7 +14,7 @@ const theme = {
     sm: "12px",
     m: "14px",
     l: "24px",
-    title: "96px",
+    title: "64px",
   },
 
   spacing: {

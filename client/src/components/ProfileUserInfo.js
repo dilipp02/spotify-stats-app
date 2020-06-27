@@ -29,7 +29,7 @@ const NoImg = styled.div`
 const UserInfoNameStats = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
@@ -71,6 +71,7 @@ const ProfileUserInfo = (props) => {
           className="unStyledLink"
           href={props.user.external_urls.spotify}
           target="_blank"
+          rel="noreferrer"
         >
           <h1 className="title">{props.user.display_name}</h1>
         </a>

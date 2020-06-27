@@ -3,7 +3,7 @@ import Loader from "react-loader-spinner";
 import styled from "styled-components/macro";
 
 const LoaderStyle = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;

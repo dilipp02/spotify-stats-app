@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
-import SectionHeading from "./ProfileSectionHeading";
+import SectionHeading from "./SectionHeading";
 
 const { colors, fontSize, spacing } = theme;
 
@@ -22,6 +22,11 @@ const SectionSong = styled.div`
     max-height: 100%;
     width: 100%;
   }
+  &:hover {
+    img {
+      opacity: 0.5;
+    }
+  }
 `;
 
 const SectionSongArtists = styled.div`
@@ -40,28 +45,41 @@ const ProfileSavedAlbums = (props) => {
       <SectionHeading heading="Saved Albums" />
       {props.albums ? (
         props.albums.items.slice(0, 7).map((objTrack) => (
-          <SectionSong key={objTrack.album.name.replace(" ", "").toLowerCase()}>
-            <img src={objTrack.album.images[1].url} alt={objTrack.album.name} />
-            <SectionSongArtists>
-              <a
-                href={objTrack.album.external_urls.spotify}
-                className="styledLink"
-                target="_blank"
-              >
-                <h6>{objTrack.album.name}</h6>
-              </a>
-              {objTrack.album.artists.map((objArtist) => (
-                <a
-                  key={objArtist.name.replace(" ", "").toLowerCase()}
-                  href={objArtist.external_urls.spotify}
-                  className="styledLink"
-                  target="_blank"
-                >
-                  <ArtistNames>{objArtist.name}, </ArtistNames>
-                </a>
-              ))}
-            </SectionSongArtists>
-          </SectionSong>
+          <a
+            href={objTrack.album.external_urls.spotify}
+            target="_blank"
+            rel="noreferrer"
+            key={objTrack.album.name.replace(" ", "").toLowerCase()}
+          >
+            <SectionSong>
+              <img
+                src={objTrack.album.images[1].url}
+                alt={objTrack.album.name}
+              />
+              <SectionSongArtists>
+                <h4>{objTrack.album.name}</h4>
+                {objTrack.album.artists.map((objArtist, index) => (
+                  <a
+                    key={objArtist.name.replace(" ", "").toLowerCase()}
+                    href={objArtist.external_urls.spotify}
+                    className="styledLink"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ArtistNames>
+                      {" "}
+                      {objArtist.name}
+                      {index < objTrack.album.artists.length - 1 ? (
+                        <span>,</span>
+                      ) : (
+                        <span> </span>
+                      )}
+                    </ArtistNames>
+                  </a>
+                ))}
+              </SectionSongArtists>
+            </SectionSong>
+          </a>
         ))
       ) : (
         <h1>No Data</h1>

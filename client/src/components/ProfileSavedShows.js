@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
-import SectionHeading from "./ProfileSectionHeading";
+import SectionHeading from "./SectionHeading";
 
 const { colors, fontSize, spacing } = theme;
 
@@ -23,6 +23,11 @@ const SectionSong = styled.div`
     width: 100%;
     border-radius: ${spacing.base};
   }
+  &:hover {
+    img {
+      opacity: 0.5;
+    }
+  }
 `;
 
 const SectionSongArtists = styled.div`
@@ -36,18 +41,19 @@ const ProfileSavedShows = (props) => {
       <SectionHeading heading="Saved Shows" />
       {props.shows ? (
         props.shows.items.slice(0, 7).map((objTrack) => (
-          <SectionSong key={objTrack.show.name.replace(" ", "").toLowerCase()}>
-            <img src={objTrack.show.images[1].url} alt={objTrack.show.name} />
-            <SectionSongArtists>
-              <a
-                href={objTrack.show.external_urls.spotify}
-                className="styledLink"
-                target="_blank"
-              >
-                <h6>{objTrack.show.name}</h6>
-              </a>
-            </SectionSongArtists>
-          </SectionSong>
+          <a
+            href={objTrack.show.external_urls.spotify}
+            target="_blank"
+            rel="noreferrer"
+            key={objTrack.show.name.replace(" ", "").toLowerCase()}
+          >
+            <SectionSong>
+              <img src={objTrack.show.images[1].url} alt={objTrack.show.name} />
+              <SectionSongArtists>
+                <h4>{objTrack.show.name}</h4>
+              </SectionSongArtists>
+            </SectionSong>
+          </a>
         ))
       ) : (
         <h1>No Data</h1>
