@@ -89,6 +89,7 @@ const GlobalStyle = createGlobalStyle`
         border-radius: 30px;
         letter-spacing: 1.76px;
         cursor: pointer;
+        font-family: 'Circular Std';
     }
 `;
 

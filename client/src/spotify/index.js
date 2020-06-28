@@ -98,3 +98,32 @@ export const getSavedAlbums = () =>
 
 export const getSavedShows = () =>
   axios.get("https://api.spotify.com/v1/me/shows?limit=50", { headers });
+
+export const getRecentlyPlayed = () =>
+  axios.get("https://api.spotify.com/v1/me/player/recently-played?limit=50", {
+    headers,
+  });
+
+export const getTopTracksLongTerm = () =>
+  axios.get(
+    "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=50",
+    {
+      headers,
+    }
+  );
+
+export const getTopTracksMediumTerm = () =>
+  axios.get(
+    "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50",
+    {
+      headers,
+    }
+  );
+
+export const getTopTracksShortTerm = () =>
+  axios.get(
+    "https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50",
+    {
+      headers,
+    }
+  );

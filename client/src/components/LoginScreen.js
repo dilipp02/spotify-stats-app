@@ -14,7 +14,7 @@ const LoginScreenStyle = styled.div`
 
 const LoginHeading = styled.h1`
   font-size: 48px;
-  color: #1db954;
+  color: ${colors.green};
   margin-bottom: 20px;
 `;
 

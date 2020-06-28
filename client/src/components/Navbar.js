@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Spotify from "./icons/Spotify";
 // import { Link } from "@reach/router";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 import { Link } from "@reach/router";
 
-const { colors, fontSize } = theme;
+const { colors, fontSize, spacing } = theme;
 
 const NavDiv = styled.div`
   display: flex;
   align-items: center;
-  background-color: #040404;
+  background-color: ${colors.black};
   height: 100vh;
   width: 200px;
   letter-spacing: normal;
@@ -36,7 +36,7 @@ const NavbarItems = styled.ul`
   flex-direction: column;
   height: 65%;
   align-items: center;
-  padding: 0px 8px;
+  padding: 0px ${spacing.m};
 `;
 
 const NavbarItem = styled(Link)`
@@ -46,15 +46,15 @@ const NavbarItem = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 12px 0px;
+  margin: ${spacing.l} 0px;
   color: ${colors.fontgrey};
   &:hover {
-    color: #fcfcfc;
+    color: ${colors.white};
   }
-  &:active {
-    color: #fcfcfc;
-    background-color: #282828;
-    border-radius: 4px;
+  &.active {
+    color: ${colors.white};
+    background-color: ${colors.backgroundgrey};
+    border-radius: ${spacing.s};
   }
 `;
 
@@ -63,6 +63,8 @@ const NavbarIcon = styled.span`
 `;
 
 const Navbar = () => {
+  const [active, setActive] = useState("Profile");
+
   return (
     <NavDiv>
       <NavNav>
@@ -72,7 +74,13 @@ const Navbar = () => {
           </Link>
         </SpotifyLogo>
         <NavbarItems>
-          <NavbarItem to="/">
+          <NavbarItem
+            to="/"
+            className={active == "Profile" ? "active" : ""}
+            onClick={() => {
+              setActive("Profile");
+            }}
+          >
             <span>
               <NavbarIcon>
                 <i className="fas fa-user"></i>
@@ -80,7 +88,13 @@ const Navbar = () => {
               Profile
             </span>
           </NavbarItem>
-          <NavbarItem to="/tracks">
+          <NavbarItem
+            to="/tracks"
+            className={active == "Tracks" ? "active" : ""}
+            onClick={() => {
+              setActive("Tracks");
+            }}
+          >
             <span>
               <NavbarIcon>
                 <i className="fas fa-compact-disc"></i>
@@ -88,7 +102,13 @@ const Navbar = () => {
               Tracks
             </span>
           </NavbarItem>
-          <NavbarItem to="/">
+          <NavbarItem
+            to="/"
+            className={active == "Artists" ? "active" : ""}
+            onClick={() => {
+              setActive("Artists");
+            }}
+          >
             <span>
               <NavbarIcon>
                 <i className="fas fa-microphone-alt"></i>
@@ -96,7 +116,13 @@ const Navbar = () => {
               Artists
             </span>
           </NavbarItem>
-          <NavbarItem to="/">
+          <NavbarItem
+            to="/"
+            className={active == "Playlists" ? "active" : ""}
+            onClick={() => {
+              setActive("Playlists");
+            }}
+          >
             <span>
               <NavbarIcon>
                 <i className="fas fa-file-audio"></i>
@@ -104,7 +130,13 @@ const Navbar = () => {
               Playlists
             </span>
           </NavbarItem>
-          <NavbarItem to="/">
+          <NavbarItem
+            to="/"
+            className={active == "Albums&Shows" ? "active" : ""}
+            onClick={() => {
+              setActive("Albums&Shows");
+            }}
+          >
             <span>
               <NavbarIcon>
                 <i className="fas fa-music"></i>
