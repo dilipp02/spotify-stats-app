@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import savedTracks from "../samp/savedTracks.json";
-// import recentlyPlayed from "../samp/recentlyPlayed.json";
 import LoadingIndicator from "./LoadingIndicator";
 import TrackSection from "./TracksSection";
-import styled from "styled-components/macro";
 import axios from "axios";
 import {
   getSavedTracks,
@@ -13,14 +10,9 @@ import {
   getTopTracksShortTerm,
 } from "../spotify";
 import TopTrackSection from "./TopTracksSection";
-
-const TracksStyle = styled.div`
-  min-height: 100vh;
-  padding: 32px 64px;
-`;
+import { PageStyle } from "../style/PageStyle";
 
 const Tracks = () => {
-  // getTopTracksLongTerm().then((res) => console.log(JSON.stringify(res)));
   const [savedTracks, setSavedTracks] = useState(null);
   const [recentlyPlayed, setRecentlyPlayed] = useState(null);
   const [longTermTracks, setLongTermTracks] = useState(null);
@@ -47,13 +39,8 @@ const Tracks = () => {
       );
   }
 
-  // async function getProfileData() {
-  //   getCurrentTrack().then((res) => console.log(res));
-  // }
-
   useEffect(() => {
     getProfileData();
-    // console.log("Hello");
   }, []);
 
   return savedTracks &&
@@ -61,7 +48,7 @@ const Tracks = () => {
     longTermTracks &&
     mediumTermTracks &&
     shortTermTracks ? (
-    <TracksStyle>
+    <PageStyle>
       <TrackSection tracks={savedTracks} title="Saved Tracks" />
       <TrackSection tracks={recentlyPlayed} title="Recently Played" />
       <TopTrackSection
@@ -69,7 +56,7 @@ const Tracks = () => {
         mediumtermtracks={mediumTermTracks}
         shorttermtracks={shortTermTracks}
       />
-    </TracksStyle>
+    </PageStyle>
   ) : (
     <LoadingIndicator />
   );

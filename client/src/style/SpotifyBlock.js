@@ -4,7 +4,7 @@ import theme from "../style/theme";
 const { colors, fontSize, spacing } = theme;
 
 export const SavedTracks = styled.div`
-  margin: ${spacing.base} ${spacing.xxl};
+  margin: ${spacing.xxl} 0px;
   display: grid;
   gap: ${spacing.base};
   grid-template-rows: auto 1fr;
@@ -45,4 +45,8 @@ export const ArtistNames = styled.span`
 export const ImageDiv = styled.div`
   padding-bottom: 100%;
   position: relative;
+`;
+
+export const HeadingBlock = styled.h4`
+  margin-bottom: ${spacing.l};
 `;

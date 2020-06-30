@@ -6,6 +6,7 @@ import {
   SectionSongArtists,
   ArtistNames,
   ImageDiv,
+  HeadingBlock,
 } from "../style/SpotifyBlock";
 
 const ProfileSavedAlbums = (props) => {
@@ -13,7 +14,7 @@ const ProfileSavedAlbums = (props) => {
     <SavedTracks>
       <SectionHeading heading="Saved Albums" />
       {props.albums ? (
-        props.albums.items.slice(0, 7).map((objTrack) => (
+        props.albums.items.slice(0, 6).map((objTrack) => (
           <a
             href={objTrack.album.external_urls.spotify}
             target="_blank"
@@ -28,7 +29,7 @@ const ProfileSavedAlbums = (props) => {
                 />
               </ImageDiv>
               <SectionSongArtists>
-                <h4>{objTrack.album.name}</h4>
+                <HeadingBlock>{objTrack.album.name}</HeadingBlock>
                 {objTrack.album.artists.map((objArtist, index) => (
                   <a
                     key={objArtist.name.replace(" ", "").toLowerCase()}

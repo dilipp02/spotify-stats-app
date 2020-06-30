@@ -1,86 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import theme from "../style/theme";
 import MusicIcon from "./icons/MusicIcon";
 import { formatDuration } from "../utils";
-import LoadingIndicator from "./LoadingIndicator";
 import { Link } from "@reach/router";
 import { useEffect } from "react";
 import { ArtistNames } from "../style/SpotifyBlock";
-
-const { colors, fontSize, spacing } = theme;
-
-const TracksStyle = styled.div`
-  margin-top: ${spacing.xxl};
-`;
-
-const SavedTracks = styled.div`
-  margin-top: ${spacing.m};
-  padding: ${spacing.m} ${spacing.base};
-  display: flex;
-  align-items: center;
-  img {
-    margin: 0px ${spacing.base};
-  }
-  &:hover {
-    background-color: ${colors.backgroundgrey};
-    img {
-      opacity: 0.5;
-    }
-  }
-`;
-
-const TracksNameSection = styled.div`
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: ${colors.fontgrey};
-`;
-
-const TimeStyle = styled.span`
-  font-size: ${fontSize.m};
-  margin: 0px ${spacing.base};
-  color: ${colors.fontgrey};
-`;
-
-const ShowButtonDiv = styled.div`
-  text-align: center;
-`;
-
-const ShowButton = styled.button`
-  background-color: transparent;
-  color: ${colors.white};
-  &:hover {
-    transform: scale(1.06);
-  }
-`;
-
-const SectionHeadingStyle = styled.div`
-  grid-column: 1/-1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const SectionTitleDiv = styled.div`
-  flex: 1;
-`;
-
-const TopTracksButton = styled.button`
-  background-color: transparent;
-  color: ${colors.fontgrey};
-  letter-spacing: 1.76px;
-  margin: 0px ${spacing.s};
-  font-size: ${fontSize.sm};
-  &:hover {
-    text-decoration: underline;
-  }
-  &.active {
-    color: ${colors.white};
-    text-decoration: underline;
-  }
-`;
+import {
+  TracksStyle,
+  SavedTracks,
+  TracksNameSection,
+  TimeStyle,
+  ShowButtonDiv,
+  ShowButton,
+  TopTracksButton,
+} from "../style/TracksStyle";
+import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
 
 const TopTrackSection = (props) => {
   const [currentTracks, setCurrentTracks] = useState(props.longtermtracks);
@@ -122,7 +56,7 @@ const TopTrackSection = (props) => {
 
   useEffect(() => {});
 
-  return savedtracks ? (
+  return (
     <TracksStyle>
       <SectionHeadingStyle>
         <SectionTitleDiv>
@@ -149,62 +83,66 @@ const TopTrackSection = (props) => {
           <span>4 WEEKS</span>
         </TopTracksButton>
       </SectionHeadingStyle>
-      {savedtracks.map((objTrack) => (
-        <Link
-          to={`/tracks/${objTrack.id}`}
-          key={objTrack.name.replace(" ", "").toLowerCase()}
-        >
-          <SavedTracks>
-            <MusicIcon />
-            <img
-              src={objTrack.album.images[2].url}
-              height="50px"
-              width="50px"
-              alt={objTrack.name}
-            />
-            <TracksNameSection>
-              <h4>{objTrack.name}</h4>
-              {objTrack.artists.map((objArtist, index) => (
-                <a
-                  key={objArtist.name.replace(" ", "").toLowerCase()}
-                  href={objArtist.external_urls.spotify}
-                  className="styledLink"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+      {savedtracks ? (
+        <div>
+          {savedtracks.map((objTrack) => (
+            <Link
+              to={`/tracks/${objTrack.id}`}
+              key={objTrack.name.replace(" ", "").toLowerCase()}
+            >
+              <SavedTracks>
+                <MusicIcon />
+                <img
+                  src={objTrack.album.images[2].url}
+                  height="50px"
+                  width="50px"
+                  alt={objTrack.name}
+                />
+                <TracksNameSection>
+                  <h4>{objTrack.name}</h4>
+                  {objTrack.artists.map((objArtist, index) => (
+                    <a
+                      key={objArtist.name.replace(" ", "").toLowerCase()}
+                      href={objArtist.external_urls.spotify}
+                      className="styledLink"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <ArtistNames>
+                        {" "}
+                        {objArtist.name}
+                        {index < objTrack.artists.length - 1 ? (
+                          <span>,</span>
+                        ) : (
+                          <span> </span>
+                        )}
+                      </ArtistNames>
+                    </a>
+                  ))}
                   <ArtistNames>
-                    {" "}
-                    {objArtist.name}
-                    {index < objTrack.artists.length - 1 ? (
-                      <span>,</span>
-                    ) : (
-                      <span> </span>
-                    )}
+                    &nbsp;&middot;&nbsp;&nbsp;
+                    {objTrack.album.name}
                   </ArtistNames>
-                </a>
-              ))}
-              <ArtistNames>
-                &nbsp;&middot;&nbsp;&nbsp;
-                {objTrack.album.name}
-              </ArtistNames>
-            </TracksNameSection>
-            <TimeStyle>{formatDuration(objTrack.duration_ms)}</TimeStyle>
-          </SavedTracks>
-        </Link>
-      ))}
-      <ShowButtonDiv>
-        <ShowButton onClick={showMoreTracks}>
-          SHOW {buttonSavedTracks.toUpperCase() + "  "}
-          <i
-            className={`fas fa-chevron-${
-              buttonSavedTracks === "more" ? "down" : "up"
-            }`}
-          ></i>
-        </ShowButton>
-      </ShowButtonDiv>
+                </TracksNameSection>
+                <TimeStyle>{formatDuration(objTrack.duration_ms)}</TimeStyle>
+              </SavedTracks>
+            </Link>
+          ))}
+          <ShowButtonDiv>
+            <ShowButton onClick={showMoreTracks}>
+              SHOW {buttonSavedTracks.toUpperCase() + "  "}
+              <i
+                className={`fas fa-chevron-${
+                  buttonSavedTracks === "more" ? "down" : "up"
+                }`}
+              ></i>
+            </ShowButton>
+          </ShowButtonDiv>
+        </div>
+      ) : (
+        <h1>No data</h1>
+      )}
     </TracksStyle>
-  ) : (
-    <LoadingIndicator />
   );
 };
 

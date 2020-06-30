@@ -1,18 +1,28 @@
 import React from "react";
 import SectionHeading from "./SectionHeading";
+import styled from "styled-components/macro";
 import {
   SavedTracks,
   SectionSong,
   SectionSongArtists,
-  ImageDiv,
+  ArtistNames,
+  HeadingBlock,
 } from "../style/SpotifyBlock";
+
+const ImageDiv = styled.div`
+  padding-bottom: 100%;
+  position: relative;
+  img {
+    border-radius: 8px;
+  }
+`;
 
 const ProfileSavedShows = (props) => {
   return (
     <SavedTracks>
       <SectionHeading heading="Saved Shows" />
       {props.shows ? (
-        props.shows.items.slice(0, 7).map((objTrack) => (
+        props.shows.items.slice(0, 6).map((objTrack) => (
           <a
             href={objTrack.show.external_urls.spotify}
             target="_blank"
@@ -27,7 +37,8 @@ const ProfileSavedShows = (props) => {
                 />
               </ImageDiv>
               <SectionSongArtists>
-                <h4>{objTrack.show.name}</h4>
+                <HeadingBlock>{objTrack.show.name}</HeadingBlock>
+                <ArtistNames>{objTrack.show.publisher}</ArtistNames>
               </SectionSongArtists>
             </SectionSong>
           </a>

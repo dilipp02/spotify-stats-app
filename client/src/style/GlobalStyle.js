@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import theme from "./theme";
 import CircularStdBlackWoff from "../fonts/CircularStd-Black.woff";
 import CircularStdBlackWoff2 from "../fonts/CircularStd-Black.woff2";
-const { colors, fontSize } = theme;
+const { colors, fontSize, spacing } = theme;
 
 const GlobalStyle = createGlobalStyle`
 

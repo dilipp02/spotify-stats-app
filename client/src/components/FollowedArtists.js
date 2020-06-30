@@ -1,43 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import theme from "../style/theme";
-import LoadingIndicator from "./LoadingIndicator";
 import { Link } from "@reach/router";
 import {
   SavedTracks,
   SectionSong,
   SectionSongArtists,
   ArtistNames,
-  ImageDiv,
+  HeadingBlock,
 } from "../style/SpotifyBlock";
+import { TracksStyle, ShowButtonDiv, ShowButton } from "../style/TracksStyle";
 import { getFollowedArtists } from "../spotify";
+import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
 
-const { colors, fontSize, spacing } = theme;
-
-const TracksStyle = styled.div`
-  margin-top: ${spacing.xxl};
-`;
-
-const SectionHeadingStyle = styled.div`
-  grid-column: 1/-1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const SectionTitleDiv = styled.div`
-  flex: 1;
-`;
-
-const ShowButtonDiv = styled.div`
-  text-align: center;
-`;
-
-const ShowButton = styled.button`
-  background-color: transparent;
-  color: ${colors.white};
-  &:hover {
-    transform: scale(1.06);
+const ImageDiv = styled.div`
+  padding-bottom: 100%;
+  position: relative;
+  img {
+    border-radius: 50%;
   }
 `;
 
@@ -80,7 +59,7 @@ const FollowedArtists = (props) => {
                   <img src={objArtist.images[1].url} alt={objArtist.name} />
                 </ImageDiv>
                 <SectionSongArtists>
-                  <h4>{objArtist.name}</h4>
+                  <HeadingBlock>{objArtist.name}</HeadingBlock>
                   <ArtistNames>Artist</ArtistNames>
                 </SectionSongArtists>
               </SectionSong>
@@ -91,14 +70,18 @@ const FollowedArtists = (props) => {
         )}
       </SavedTracks>
       <ShowButtonDiv>
-        <ShowButton onClick={showMoreTracks}>
-          SHOW {buttonSavedTracks.toUpperCase() + "  "}
-          <i
-            className={`fas fa-chevron-${
-              buttonSavedTracks === "more" ? "down" : "up"
-            }`}
-          ></i>
-        </ShowButton>
+        {followedArtists ? (
+          <ShowButton onClick={showMoreTracks}>
+            SHOW {buttonSavedTracks.toUpperCase() + "  "}
+            <i
+              className={`fas fa-chevron-${
+                buttonSavedTracks === "more" ? "down" : "up"
+              }`}
+            ></i>
+          </ShowButton>
+        ) : (
+          <div></div>
+        )}
       </ShowButtonDiv>
     </TracksStyle>
   );

@@ -1,58 +1,27 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components/macro";
-import theme from "../style/theme";
-import LoadingIndicator from "./LoadingIndicator";
 import { Link } from "@reach/router";
+import styled from "styled-components/macro";
 import {
   SavedTracks,
   SectionSong,
   SectionSongArtists,
   ArtistNames,
-  ImageDiv,
+  HeadingBlock,
 } from "../style/SpotifyBlock";
 import { getFollowedArtists } from "../spotify";
+import {
+  TracksStyle,
+  ShowButtonDiv,
+  ShowButton,
+  TopTracksButton,
+} from "../style/TracksStyle";
+import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
 
-const { colors, fontSize, spacing } = theme;
-
-const TracksStyle = styled.div`
-  margin-top: ${spacing.xxl};
-`;
-
-const SectionHeadingStyle = styled.div`
-  grid-column: 1/-1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const SectionTitleDiv = styled.div`
-  flex: 1;
-`;
-
-const ShowButtonDiv = styled.div`
-  text-align: center;
-`;
-
-const ShowButton = styled.button`
-  background-color: transparent;
-  color: ${colors.white};
-  &:hover {
-    transform: scale(1.06);
-  }
-`;
-
-const TopTracksButton = styled.button`
-  background-color: transparent;
-  color: ${colors.fontgrey};
-  letter-spacing: 1.76px;
-  margin: 0px ${spacing.s};
-  font-size: ${fontSize.sm};
-  &:hover {
-    text-decoration: underline;
-  }
-  &.active {
-    color: ${colors.white};
-    text-decoration: underline;
+const ImageDiv = styled.div`
+  padding-bottom: 100%;
+  position: relative;
+  img {
+    border-radius: 50%;
   }
 `;
 
@@ -137,7 +106,7 @@ const TopArtists = (props) => {
                   <img src={objArtist.images[1].url} alt={objArtist.name} />
                 </ImageDiv>
                 <SectionSongArtists>
-                  <h4>{objArtist.name}</h4>
+                  <HeadingBlock>{objArtist.name}</HeadingBlock>
                   <ArtistNames>Artist</ArtistNames>
                 </SectionSongArtists>
               </SectionSong>
@@ -148,14 +117,18 @@ const TopArtists = (props) => {
         )}
       </SavedTracks>
       <ShowButtonDiv>
-        <ShowButton onClick={showMoreTracks}>
-          SHOW {buttonSavedTracks.toUpperCase() + "  "}
-          <i
-            className={`fas fa-chevron-${
-              buttonSavedTracks === "more" ? "down" : "up"
-            }`}
-          ></i>
-        </ShowButton>
+        {followedArtists ? (
+          <ShowButton onClick={showMoreTracks}>
+            SHOW {buttonSavedTracks.toUpperCase() + "  "}
+            <i
+              className={`fas fa-chevron-${
+                buttonSavedTracks === "more" ? "down" : "up"
+              }`}
+            ></i>
+          </ShowButton>
+        ) : (
+          <div></div>
+        )}
       </ShowButtonDiv>
     </TracksStyle>
   );

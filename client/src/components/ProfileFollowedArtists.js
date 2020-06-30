@@ -1,23 +1,26 @@
 import React, { useState } from "react";
-import styled from "styled-components/macro";
-import theme from "../style/theme";
-import LoadingIndicator from "./LoadingIndicator";
 import { Link } from "@reach/router";
+import styled from "styled-components/macro";
 import {
   SavedTracks,
   SectionSong,
   SectionSongArtists,
   ArtistNames,
-  ImageDiv,
+  HeadingBlock,
 } from "../style/SpotifyBlock";
-import { getFollowedArtists } from "../spotify";
 import SectionHeading from "./SectionHeading";
 
-const { colors, fontSize, spacing } = theme;
+const ImageDiv = styled.div`
+  padding-bottom: 100%;
+  position: relative;
+  img {
+    border-radius: 50%;
+  }
+`;
 
 const ProfileFollowedArtists = (props) => {
   const [followedArtists, setFollowedArtists] = useState(
-    props.artists.artists.items.slice(0, 7)
+    props.artists.artists.items.slice(0, 6)
   );
 
   return (
@@ -36,7 +39,7 @@ const ProfileFollowedArtists = (props) => {
                 <img src={objArtist.images[1].url} alt={objArtist.name} />
               </ImageDiv>
               <SectionSongArtists>
-                <h4>{objArtist.name}</h4>
+                <HeadingBlock>{objArtist.name}</HeadingBlock>
                 <ArtistNames>Artist</ArtistNames>
               </SectionSongArtists>
             </SectionSong>

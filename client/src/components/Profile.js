@@ -21,15 +21,12 @@ import ProfileSavedTracks from "./ProfileSavedTracks";
 import ProfileSavedAlbums from "./ProfileSavedAlbums";
 import ProfileSavedShows from "./ProfileSavedShows";
 import ProfileFollowedArtists from "./ProfileFollowedArtists";
+import { PageStyle } from "../style/PageStyle";
 
 const { colors, spacing } = theme;
 
-const UserProfile = styled.div`
-  width: 100%;
-`;
-
 const PlayerDiv = styled.div`
-  margin: ${spacing.base} ${spacing.xxl};
+  margin-bottom: ${spacing.xxl} 0px;
 `;
 
 const PlayerStyle = styled.div`
@@ -61,7 +58,7 @@ const Profile = () => {
   // }, [setUser]);
 
   return user ? (
-    <UserProfile>
+    <PageStyle>
       <ProfileUserInfo user={user} />
       <PlayerDiv>
         <a className="styledLink" href="#">
@@ -75,7 +72,7 @@ const Profile = () => {
       <ProfileFollowedArtists artists={followedArtists.data} />
       <ProfileSavedAlbums albums={savedalbums.data} />
       <ProfileSavedShows shows={savedshows.data} />
-    </UserProfile>
+    </PageStyle>
   ) : (
     <LoadingIndicator type="Audio" />
   );
