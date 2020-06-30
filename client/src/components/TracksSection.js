@@ -5,6 +5,7 @@ import MusicIcon from "./icons/MusicIcon";
 import { formatDuration } from "../utils";
 import LoadingIndicator from "./LoadingIndicator";
 import { Link } from "@reach/router";
+import { ArtistNames } from "../style/SpotifyBlock";
 
 const { colors, fontSize, spacing } = theme;
 
@@ -26,11 +27,6 @@ const SavedTracks = styled.div`
       opacity: 0.5;
     }
   }
-`;
-
-const ArtistNames = styled.span`
-  color: ${colors.fontgrey};
-  font-size: ${fontSize.m};
 `;
 
 const TracksNameSection = styled.div`

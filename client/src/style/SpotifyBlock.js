@@ -19,6 +19,7 @@ export const SectionSong = styled.div`
   img {
     max-height: 100%;
     width: 100%;
+    position: absolute;
   }
   &:hover {
     img {
@@ -39,4 +40,9 @@ export const SectionSongArtists = styled.div`
 export const ArtistNames = styled.span`
   color: ${colors.fontgrey};
   font-size: ${fontSize.sm};
+`;
+
+export const ImageDiv = styled.div`
+  padding-bottom: 100%;
+  position: relative;
 `;

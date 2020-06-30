@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 import IconUser from "./icons/user";
+
 const { colors, fontSize, spacing } = theme;
 
 const UserInfo = styled.div`
@@ -16,6 +17,7 @@ const UserImg = styled.div`
   display: block;
   img {
     border-radius: 50%;
+    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -29,25 +31,20 @@ const NoImg = styled.div`
 const UserInfoNameStats = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 `;
 
-const UserInfoStats = styled.div`
-  width: max-content;
-  display: grid;
-  gap: ${spacing.xxl};
-  grid-template-columns: repeat(3, 1fr);
-  font-size: ${fontSize.m};
-`;
-
-const UserInfoStatsNum = styled.div`
-  display: block;
+const Num = styled.span`
   text-align: center;
   color: ${colors.green};
   font-size: ${fontSize.l};
-  margin-bottom: ${spacing.m};
+  margin: 0px ${spacing.m};
 `;
+
+const greyFont = {
+  color: colors.fontgrey,
+};
 
 const ProfileUserInfo = (props) => {
   return (
@@ -75,20 +72,19 @@ const ProfileUserInfo = (props) => {
         >
           <h1 className="title">{props.user.display_name}</h1>
         </a>
-        <UserInfoStats>
-          <div>
-            <UserInfoStatsNum>{props.user.followers.total}</UserInfoStatsNum>
-            <span>FOLLOWERS</span>
-          </div>
-          <div>
-            <UserInfoStatsNum>{props.user.followers.total}</UserInfoStatsNum>
-            <span>FOLLOWERS</span>
-          </div>
-          <div>
-            <UserInfoStatsNum>{props.user.followers.total}</UserInfoStatsNum>
-            <span>FOLLOWERS</span>
-          </div>
-        </UserInfoStats>
+        <div>
+          <a href="#" className="styledLink">
+            <span style={greyFont}>
+              <Num>{props.user.followers.total}</Num> PLAYLISTS
+            </span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          <a href="#" className="styledLink">
+            <span style={greyFont}>
+              <Num>{props.user.followers.total}</Num> FOLLOWERS
+            </span>
+          </a>
+        </div>
       </UserInfoNameStats>
     </UserInfo>
   );

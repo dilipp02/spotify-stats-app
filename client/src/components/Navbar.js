@@ -46,7 +46,7 @@ const NavbarItem = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: ${spacing.l} 0px;
+  margin: 28px 0px;
   color: ${colors.fontgrey};
   &:hover {
     color: ${colors.white};
@@ -103,7 +103,7 @@ const Navbar = () => {
             </span>
           </NavbarItem>
           <NavbarItem
-            to="/"
+            to="/artists"
             className={active == "Artists" ? "active" : ""}
             onClick={() => {
               setActive("Artists");

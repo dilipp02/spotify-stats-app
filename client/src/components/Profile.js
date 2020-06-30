@@ -5,6 +5,7 @@ import user from "../samp/userData.json";
 import savedtracks from "../samp/savedTracks.json";
 import savedalbums from "../samp/savedAlbums.json";
 import savedshows from "../samp/savedShows.json";
+import followedArtists from "../samp/followedArtists.json";
 // import player from "../samp/currentPlayer.json";
 // import axios from "axios";
 // import {
@@ -19,6 +20,7 @@ import Player from "./Player";
 import ProfileSavedTracks from "./ProfileSavedTracks";
 import ProfileSavedAlbums from "./ProfileSavedAlbums";
 import ProfileSavedShows from "./ProfileSavedShows";
+import ProfileFollowedArtists from "./ProfileFollowedArtists";
 
 const { colors, spacing } = theme;
 
@@ -70,6 +72,7 @@ const Profile = () => {
         </PlayerStyle>
       </PlayerDiv>
       <ProfileSavedTracks tracks={savedtracks.data} />
+      <ProfileFollowedArtists artists={followedArtists.data} />
       <ProfileSavedAlbums albums={savedalbums.data} />
       <ProfileSavedShows shows={savedshows.data} />
     </UserProfile>

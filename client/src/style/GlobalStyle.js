@@ -90,6 +90,9 @@ const GlobalStyle = createGlobalStyle`
         letter-spacing: 1.76px;
         cursor: pointer;
         font-family: 'Circular Std';
+        &:focus {
+            outline: 0px;
+        }
     }
 `;
 

@@ -5,6 +5,7 @@ import {
   SectionSong,
   SectionSongArtists,
   ArtistNames,
+  ImageDiv,
 } from "../style/SpotifyBlock";
 
 const ProfileSavedTracks = (props) => {
@@ -20,10 +21,12 @@ const ProfileSavedTracks = (props) => {
             key={objTrack.track.name.replace(" ", "").toLowerCase()}
           >
             <SectionSong>
-              <img
-                src={objTrack.track.album.images[1].url}
-                alt={objTrack.track.name}
-              />
+              <ImageDiv>
+                <img
+                  src={objTrack.track.album.images[1].url}
+                  alt={objTrack.track.name}
+                />
+              </ImageDiv>
               <SectionSongArtists>
                 <h4>{objTrack.track.name}</h4>
 

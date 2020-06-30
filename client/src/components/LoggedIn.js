@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import styled from "styled-components/macro";
 import { Router } from "@reach/router";
 import Tracks from "./Tracks";
+import Artists from "./Artists";
 
 const AppDiv = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ const LoggedIn = () => {
         <Router>
           <Profile path="/" />
           <Tracks path="/tracks" />
+          <Artists path="/artists" />
         </Router>
       </Content>
     </AppDiv>

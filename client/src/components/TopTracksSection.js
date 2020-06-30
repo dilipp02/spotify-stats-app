@@ -6,6 +6,7 @@ import { formatDuration } from "../utils";
 import LoadingIndicator from "./LoadingIndicator";
 import { Link } from "@reach/router";
 import { useEffect } from "react";
+import { ArtistNames } from "../style/SpotifyBlock";
 
 const { colors, fontSize, spacing } = theme;
 
@@ -27,11 +28,6 @@ const SavedTracks = styled.div`
       opacity: 0.5;
     }
   }
-`;
-
-const ArtistNames = styled.span`
-  color: ${colors.fontgrey};
-  font-size: ${fontSize.m};
 `;
 
 const TracksNameSection = styled.div`
@@ -108,10 +104,9 @@ const TopTrackSection = (props) => {
   }
 
   async function currentTracksFunc(e) {
-    if (e.target.innerText == "ALL TIME") {
+    if (e.target.innerText == "ALL TIME")
       setCurrentTracks(props.longtermtracks);
-      console.log(currentTracks);
-    } else if (e.target.innerText == "6 MONTHS")
+    else if (e.target.innerText == "6 MONTHS")
       setCurrentTracks(props.mediumtermtracks);
     else setCurrentTracks(props.shorttermtracks);
 
