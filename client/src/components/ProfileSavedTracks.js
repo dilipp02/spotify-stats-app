@@ -1,35 +1,36 @@
 import React from "react";
-import SectionHeading from "./SectionHeading";
+import MusicIcon from "./icons/MusicIcon";
+import { formatDuration } from "../utils";
+import { Link } from "@reach/router";
+import { ArtistNames } from "../style/SpotifyBlock";
 import {
+  TracksStyle,
   SavedTracks,
-  SectionSong,
-  SectionSongArtists,
-  ArtistNames,
-  ImageDiv,
-  HeadingBlock,
-} from "../style/SpotifyBlock";
+  TracksNameSection,
+  TimeStyle,
+} from "../style/TracksStyle";
+import SectionHeading from "./SectionHeading";
 
-const ProfileSavedTracks = (props) => {
+const TrackSection = (props) => {
   return (
-    <SavedTracks>
+    <TracksStyle>
       <SectionHeading heading="Saved Tracks" />
       {props.tracks ? (
-        props.tracks.items.slice(0, 6).map((objTrack) => (
-          <a
-            href={objTrack.track.external_urls.spotify}
-            target="_blank"
-            rel="noreferrer"
+        props.tracks.items.slice(0, 5).map((objTrack) => (
+          <Link
+            to={`/tracks/${objTrack.track.id}`}
             key={objTrack.track.name.replace(" ", "").toLowerCase()}
           >
-            <SectionSong>
-              <ImageDiv>
-                <img
-                  src={objTrack.track.album.images[1].url}
-                  alt={objTrack.track.name}
-                />
-              </ImageDiv>
-              <SectionSongArtists>
-                <HeadingBlock>{objTrack.track.name}</HeadingBlock>
+            <SavedTracks>
+              <MusicIcon />
+              <img
+                src={objTrack.track.album.images[2].url}
+                height="50px"
+                width="50px"
+                alt={objTrack.track.name}
+              />
+              <TracksNameSection>
+                <h4>{objTrack.track.name}</h4>
                 {objTrack.track.artists.map((objArtist, index) => (
                   <a
                     key={objArtist.name.replace(" ", "").toLowerCase()}
@@ -49,15 +50,22 @@ const ProfileSavedTracks = (props) => {
                     </ArtistNames>
                   </a>
                 ))}
-              </SectionSongArtists>
-            </SectionSong>
-          </a>
+                <ArtistNames>
+                  &nbsp;&middot;&nbsp;&nbsp;
+                  {objTrack.track.album.name}
+                </ArtistNames>
+              </TracksNameSection>
+              <TimeStyle>
+                {formatDuration(objTrack.track.duration_ms)}
+              </TimeStyle>
+            </SavedTracks>
+          </Link>
         ))
       ) : (
-        <h1>No Data</h1>
+        <h1>No data</h1>
       )}
-    </SavedTracks>
+    </TracksStyle>
   );
 };
 
-export default ProfileSavedTracks;
+export default TrackSection;

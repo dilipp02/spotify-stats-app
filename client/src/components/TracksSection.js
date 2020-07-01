@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import MusicIcon from "./icons/MusicIcon";
 import { formatDuration } from "../utils";
-import LoadingIndicator from "./LoadingIndicator";
 import { Link } from "@reach/router";
 import { ArtistNames } from "../style/SpotifyBlock";
 import {

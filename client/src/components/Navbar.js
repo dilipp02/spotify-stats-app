@@ -131,7 +131,7 @@ const Navbar = () => {
             </span>
           </NavbarItem>
           <NavbarItem
-            to="/"
+            to="/albumsandshows"
             className={active == "Albums&Shows" ? "active" : ""}
             onClick={() => {
               setActive("Albums&Shows");

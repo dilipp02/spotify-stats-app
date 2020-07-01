@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components/macro";
 import MusicIcon from "./icons/MusicIcon";
 import { formatDuration } from "../utils";
 import { Link } from "@reach/router";
