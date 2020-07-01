@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 
-const { colors, fontSize, spacing } = theme;
+const { colors, fontSize, spacing, transition } = theme;
 
 export const TracksStyle = styled.div`
   margin-top: ${spacing.xxl};
@@ -12,6 +12,7 @@ export const SavedTracks = styled.div`
   padding: ${spacing.m} ${spacing.base};
   display: flex;
   align-items: center;
+  transition: ${transition};
   img {
     margin: 0px ${spacing.base};
   }
@@ -19,6 +20,9 @@ export const SavedTracks = styled.div`
     background-color: ${colors.backgroundgrey};
     img {
       opacity: 0.5;
+    }
+    h4 {
+      text-decoration: underline;
     }
   }
 `;

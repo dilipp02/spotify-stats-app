@@ -25,6 +25,8 @@ const theme = {
     xl: "24px",
     xxl: "32px",
   },
+
+  transition: `all 0.25s cubic-bezier(0.3, 0, 0.4, 1)`,
 };
 
 export default theme;

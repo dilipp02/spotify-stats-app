@@ -156,3 +156,6 @@ export const getTopArtistsShortTerm = () =>
       headers,
     }
   );
+
+export const getPlaylists = () =>
+  axios.get("https://api.spotify.com/v1/me/playlists?limit=50", { headers });

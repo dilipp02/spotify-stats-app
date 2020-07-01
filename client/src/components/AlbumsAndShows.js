@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import LoadingIndicator from "./LoadingIndicator";
 import savedalbums from "../samp/savedAlbums.json";
 import savedshows from "../samp/savedShows.json";

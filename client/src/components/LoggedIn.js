@@ -6,6 +6,7 @@ import { Router } from "@reach/router";
 import Tracks from "./Tracks";
 import Artists from "./Artists";
 import AlbumsAndShows from "./AlbumsAndShows";
+import Playlists from "./Playlists";
 
 const AppDiv = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ const LoggedIn = () => {
           <Profile path="/" />
           <Tracks path="/tracks" />
           <Artists path="/artists" />
+          <Playlists path="/playlists" />
           <AlbumsAndShows path="/albumsandshows" />
         </Router>
       </Content>

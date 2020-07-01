@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 
-const { colors, fontSize, spacing } = theme;
+const { colors, fontSize, spacing, transition } = theme;
 
 export const SavedTracks = styled.div`
   margin: ${spacing.xxl} 0px;
@@ -16,6 +16,7 @@ export const SectionSong = styled.div`
   border-radius: 16px;
   padding: ${spacing.base};
   font-size: ${fontSize.m};
+  transition: ${transition};
   img {
     max-height: 100%;
     width: 100%;
@@ -24,6 +25,9 @@ export const SectionSong = styled.div`
   &:hover {
     img {
       opacity: 0.5;
+    }
+    h4 {
+      text-decoration: underline;
     }
   }
 `;
