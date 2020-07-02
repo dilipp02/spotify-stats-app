@@ -47,9 +47,9 @@ const TopArtists = (props) => {
   }
 
   async function currentTracksFunc(e) {
-    if (e.target.innerText == "ALL TIME")
+    if (e.target.innerText === "ALL TIME")
       setCurrentArtists(props.longtermartists);
-    else if (e.target.innerText == "6 MONTHS")
+    else if (e.target.innerText === "6 MONTHS")
       setCurrentArtists(props.mediumtermartists);
     else setCurrentArtists(props.shorttermartists);
 

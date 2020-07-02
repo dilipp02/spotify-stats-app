@@ -37,9 +37,9 @@ const TopTrackSection = (props) => {
   }
 
   async function currentTracksFunc(e) {
-    if (e.target.innerText == "ALL TIME")
+    if (e.target.innerText === "ALL TIME")
       setCurrentTracks(props.longtermtracks);
-    else if (e.target.innerText == "6 MONTHS")
+    else if (e.target.innerText === "6 MONTHS")
       setCurrentTracks(props.mediumtermtracks);
     else setCurrentTracks(props.shorttermtracks);
 
@@ -86,7 +86,7 @@ const TopTrackSection = (props) => {
         <div>
           {savedtracks.map((objTrack) => (
             <Link
-              to={`/tracks/${objTrack.id}`}
+              to={`/track/${objTrack.id}`}
               key={objTrack.name.replace(" ", "").toLowerCase()}
             >
               <SavedTracks>
@@ -103,11 +103,11 @@ const TopTrackSection = (props) => {
                     <a
                       key={objArtist.name.replace(" ", "").toLowerCase()}
                       href={objArtist.external_urls.spotify}
-                      className="styledLink"
+                      className="styledLink artistlink"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <ArtistNames>
+                      <span>
                         {" "}
                         {objArtist.name}
                         {index < objTrack.artists.length - 1 ? (
@@ -115,7 +115,7 @@ const TopTrackSection = (props) => {
                         ) : (
                           <span> </span>
                         )}
-                      </ArtistNames>
+                      </span>
                     </a>
                   ))}
                   <ArtistNames>

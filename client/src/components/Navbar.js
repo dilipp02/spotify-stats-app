@@ -76,7 +76,7 @@ const Navbar = () => {
         <NavbarItems>
           <NavbarItem
             to="/"
-            className={active == "Profile" ? "active" : ""}
+            className={active === "Profile" ? "active" : ""}
             onClick={() => {
               setActive("Profile");
             }}
@@ -90,7 +90,7 @@ const Navbar = () => {
           </NavbarItem>
           <NavbarItem
             to="/tracks"
-            className={active == "Tracks" ? "active" : ""}
+            className={active === "Tracks" ? "active" : ""}
             onClick={() => {
               setActive("Tracks");
             }}
@@ -104,7 +104,7 @@ const Navbar = () => {
           </NavbarItem>
           <NavbarItem
             to="/artists"
-            className={active == "Artists" ? "active" : ""}
+            className={active === "Artists" ? "active" : ""}
             onClick={() => {
               setActive("Artists");
             }}
@@ -118,7 +118,7 @@ const Navbar = () => {
           </NavbarItem>
           <NavbarItem
             to="/playlists"
-            className={active == "Playlists" ? "active" : ""}
+            className={active === "Playlists" ? "active" : ""}
             onClick={() => {
               setActive("Playlists");
             }}
@@ -132,7 +132,7 @@ const Navbar = () => {
           </NavbarItem>
           <NavbarItem
             to="/albumsandshows"
-            className={active == "Albums&Shows" ? "active" : ""}
+            className={active === "Albums&Shows" ? "active" : ""}
             onClick={() => {
               setActive("Albums&Shows");
             }}

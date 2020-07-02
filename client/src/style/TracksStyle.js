@@ -21,9 +21,6 @@ export const SavedTracks = styled.div`
     img {
       opacity: 0.5;
     }
-    h4 {
-      text-decoration: underline;
-    }
   }
 `;
 
@@ -33,6 +30,15 @@ export const TracksNameSection = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   color: ${colors.fontgrey};
+  .artistlink {
+    color: ${colors.fontgrey};
+    font-size: ${fontSize.sm};
+  }
+  h4 {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const TimeStyle = styled.span`
@@ -42,6 +48,7 @@ export const TimeStyle = styled.span`
 `;
 
 export const ShowButtonDiv = styled.div`
+  margin-top: ${spacing.base};
   text-align: center;
 `;
 

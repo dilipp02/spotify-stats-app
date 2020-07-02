@@ -7,7 +7,7 @@ import theme from "../style/theme";
 import playlistss from "../samp/playlists.json";
 import { ArtistNames } from "../style/SpotifyBlock";
 
-const { colors, fontSize, spacing } = theme;
+const { spacing } = theme;
 
 const GridDiv = styled.div`
   margin-top: ${spacing.xxl};

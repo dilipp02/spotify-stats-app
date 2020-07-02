@@ -11,7 +11,7 @@ const SectionHeadingStyle = styled.div`
   align-items: center;
 `;
 
-const SeeAllLink = styled.span`
+const SeeAllLink = styled.a`
   color: ${colors.fontgrey};
   letter-spacing: 1.76px;
   font-size: ${fontSize.sm};
@@ -23,9 +23,9 @@ const SectionHeading = (props) => {
       <a className="styledLink" href="#">
         <h2>{props.heading}</h2>
       </a>
-      <a className="styledLink" href="#">
-        <SeeAllLink>SEE ALL</SeeAllLink>
-      </a>
+      <SeeAllLink className="styledLink" href="#">
+        <span>SEE ALL</span>
+      </SeeAllLink>
     </SectionHeadingStyle>
   );
 };

@@ -39,7 +39,7 @@ const TrackSection = (props) => {
         <div>
           {savedtracks.map((objTrack) => (
             <Link
-              to={`/tracks/${objTrack.track.id}`}
+              to={`/track/${objTrack.track.id}`}
               key={objTrack.track.name.replace(" ", "").toLowerCase()}
             >
               <SavedTracks>
@@ -56,11 +56,11 @@ const TrackSection = (props) => {
                     <a
                       key={objArtist.name.replace(" ", "").toLowerCase()}
                       href={objArtist.external_urls.spotify}
-                      className="styledLink"
+                      className="styledLink artistlink"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <ArtistNames>
+                      <span>
                         {" "}
                         {objArtist.name}
                         {index < objTrack.track.artists.length - 1 ? (
@@ -68,7 +68,7 @@ const TrackSection = (props) => {
                         ) : (
                           <span> </span>
                         )}
-                      </ArtistNames>
+                      </span>
                     </a>
                   ))}
                   <ArtistNames>

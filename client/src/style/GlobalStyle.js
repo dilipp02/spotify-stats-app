@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import theme from "./theme";
 import CircularStdBlackWoff from "../fonts/CircularStd-Black.woff";
 import CircularStdBlackWoff2 from "../fonts/CircularStd-Black.woff2";
-const { colors, fontSize, spacing } = theme;
+const { colors, fontSize, transition } = theme;
 
 const GlobalStyle = createGlobalStyle`
 
@@ -31,7 +31,6 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    h1,
     h2,
     h3,
     h4,
@@ -45,18 +44,14 @@ const GlobalStyle = createGlobalStyle`
         text-overflow: ellipsis;
     }
 
-    h2 {
-        display: inline;
+    h1 {
+        color: ${colors.white};
+        margin: 0px;
+        font-weight: normal;
     }
 
-    .title {
-        font-size: ${fontSize.title};
-        font-weight: 900;
-        letter-spacing: -.04em;
-        &:hover {
-            color: ${colors.green};
-            text-decoration: none;
-        }
+    h2 {
+        display: inline;
     }
 
     a {
@@ -90,6 +85,7 @@ const GlobalStyle = createGlobalStyle`
         letter-spacing: 1.76px;
         cursor: pointer;
         font-family: 'Circular Std';
+        transition: ${transition};
         &:focus {
             outline: 0px;
         }

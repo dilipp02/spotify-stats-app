@@ -33,6 +33,17 @@ const UserInfoNameStats = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  h1 {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+  }
+  &:hover {
+    h1 {
+      color: ${colors.green};
+      text-decoration: none;
+    }
+  }
 `;
 
 const Num = styled.span`
