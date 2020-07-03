@@ -6,11 +6,6 @@ const { colors, fontSize, spacing, transition } = theme;
 
 const AudioFeaturesDiv = styled.div`
   line-height: 32px;
-  span {
-    font-size: ${fontSize.l};
-    color: ${colors.green};
-    float: right;
-  }
 `;
 
 const AudioFeaturesRange = styled.div`
@@ -45,10 +40,14 @@ const Progress = styled.h6`
   line-height: 16px;
 `;
 
+const FeatureName = styled.span`
+  font-size: ${fontSize.sm};
+`;
+
 const AudioFeatures = (props) => {
   return (
     <AudioFeaturesDiv>
-      {props.name}
+      <FeatureName>{props.name}</FeatureName>
       <AudioFeaturesRange>
         <AudioFeaturesRangeProgress
           className="progressbar"

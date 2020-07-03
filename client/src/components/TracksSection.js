@@ -53,12 +53,10 @@ const TrackSection = (props) => {
                 <TracksNameSection>
                   <h4>{objTrack.track.name}</h4>
                   {objTrack.track.artists.map((objArtist, index) => (
-                    <a
+                    <Link
                       key={objArtist.name.replace(" ", "").toLowerCase()}
-                      href={objArtist.external_urls.spotify}
+                      to={`/artist/${objArtist.id}`}
                       className="styledLink artistlink"
-                      target="_blank"
-                      rel="noreferrer"
                     >
                       <span>
                         {" "}
@@ -69,7 +67,7 @@ const TrackSection = (props) => {
                           <span> </span>
                         )}
                       </span>
-                    </a>
+                    </Link>
                   ))}
                   <ArtistNames>
                     &nbsp;&middot;&nbsp;&nbsp;

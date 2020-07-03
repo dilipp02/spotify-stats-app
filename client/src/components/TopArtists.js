@@ -95,10 +95,8 @@ const TopArtists = (props) => {
         </SectionHeadingStyle>
         {followedArtists ? (
           followedArtists.map((objArtist) => (
-            <a
-              href={objArtist.external_urls.spotify}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to={`/artist/${objArtist.id}`}
               key={objArtist.name.replace(" ", "").toLowerCase()}
             >
               <SectionSong>
@@ -110,7 +108,7 @@ const TopArtists = (props) => {
                   <ArtistNames>Artist</ArtistNames>
                 </SectionSongArtists>
               </SectionSong>
-            </a>
+            </Link>
           ))
         ) : (
           <h1>No Data</h1>

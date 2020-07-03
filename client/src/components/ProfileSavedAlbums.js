@@ -8,11 +8,12 @@ import {
   ImageDiv,
   HeadingBlock,
 } from "../style/SpotifyBlock";
+import { Link } from "@reach/router";
 
 const ProfileSavedAlbums = (props) => {
   return (
     <SavedTracks>
-      <SectionHeading heading="Saved Albums" />
+      <SectionHeading heading="Saved Albums" link="/albumsandshows" />
       {props.albums ? (
         props.albums.items.slice(0, 6).map((objTrack) => (
           <a
@@ -31,12 +32,10 @@ const ProfileSavedAlbums = (props) => {
               <SectionSongArtists>
                 <HeadingBlock>{objTrack.album.name}</HeadingBlock>
                 {objTrack.album.artists.map((objArtist, index) => (
-                  <a
+                  <Link
                     key={objArtist.name.replace(" ", "").toLowerCase()}
-                    href={objArtist.external_urls.spotify}
+                    to={`/artist/${objArtist.id}`}
                     className="styledLink"
-                    target="_blank"
-                    rel="noreferrer"
                   >
                     <ArtistNames>
                       {" "}
@@ -47,7 +46,7 @@ const ProfileSavedAlbums = (props) => {
                         <span> </span>
                       )}
                     </ArtistNames>
-                  </a>
+                  </Link>
                 ))}
               </SectionSongArtists>
             </SectionSong>

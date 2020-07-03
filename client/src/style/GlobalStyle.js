@@ -59,13 +59,13 @@ const GlobalStyle = createGlobalStyle`
         background-color: transparent;
     }
 
-    a.unStyledLink {
+    .unStyledLink {
         :hover {
             text-decoration: none;
         }
     }
 
-    a.styledLink {
+    .styledLink {
         &:hover {
             color: ${colors.white};
             text-decoration: underline;

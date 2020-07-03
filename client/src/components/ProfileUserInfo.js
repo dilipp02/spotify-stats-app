@@ -31,15 +31,13 @@ const NoImg = styled.div`
 const UserInfoNameStats = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   h1 {
     font-size: 72px;
     font-weight: 900;
     letter-spacing: -0.04em;
-  }
-  &:hover {
-    h1 {
+    &:hover {
       color: ${colors.green};
       text-decoration: none;
     }
@@ -81,7 +79,7 @@ const ProfileUserInfo = (props) => {
           target="_blank"
           rel="noreferrer"
         >
-          <h1 className="title">{props.user.display_name}</h1>
+          <h1>{props.user.display_name}</h1>
         </a>
         <div>
           <a href="#" className="styledLink">

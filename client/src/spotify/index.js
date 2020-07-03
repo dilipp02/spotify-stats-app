@@ -167,3 +167,39 @@ export const getTrackAudioFeatures = (trackId) =>
   axios.get(`https://api.spotify.com/v1/audio-features/${trackId}`, {
     headers,
   });
+
+export const checkSavedTracks = (trackId) =>
+  axios.get(`https://api.spotify.com/v1/me/tracks/contains?ids=${trackId}`, {
+    headers,
+  });
+
+export const saveTrack = (trackId) => {
+  const url = `https://api.spotify.com/v1/me/tracks?ids=${trackId}`;
+  return axios({ method: "put", url, headers });
+};
+
+export const deleteTrack = (artistId) => {
+  const url = `https://api.spotify.com/v1/artists?ids=${artistId}`;
+  return axios({ method: "delete", url, headers });
+};
+
+export const getArtist = (artistId) =>
+  axios.get(`https://api.spotify.com/v1/artists/${artistId}`, { headers });
+
+export const checkFollowedArtist = (artistId) =>
+  axios.get(
+    `https://api.spotify.com/v1/me/following/contains?type=artist&ids=${artistId}`,
+    {
+      headers,
+    }
+  );
+
+export const followArtist = (artistId) => {
+  const url = `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`;
+  return axios({ method: "put", url, headers });
+};
+
+export const unfollowArtist = (artistId) => {
+  const url = `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`;
+  return axios({ method: "delete", url, headers });
+};

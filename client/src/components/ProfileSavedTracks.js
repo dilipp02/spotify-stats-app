@@ -14,7 +14,7 @@ import SectionHeading from "./SectionHeading";
 const TrackSection = (props) => {
   return (
     <TracksStyle>
-      <SectionHeading heading="Saved Tracks" />
+      <SectionHeading heading="Saved Tracks" link="/tracks" />
       {props.tracks ? (
         props.tracks.items.slice(0, 5).map((objTrack) => (
           <Link
@@ -32,12 +32,10 @@ const TrackSection = (props) => {
               <TracksNameSection>
                 <h4>{objTrack.track.name}</h4>
                 {objTrack.track.artists.map((objArtist, index) => (
-                  <a
+                  <Link
                     key={objArtist.name.replace(" ", "").toLowerCase()}
-                    href={objArtist.external_urls.spotify}
+                    to={`/artist/${objArtist.id}`}
                     className="styledLink artistlink"
-                    target="_blank"
-                    rel="noreferrer"
                   >
                     <span>
                       {" "}
@@ -48,7 +46,7 @@ const TrackSection = (props) => {
                         <span> </span>
                       )}
                     </span>
-                  </a>
+                  </Link>
                 ))}
                 <ArtistNames>
                   &nbsp;&middot;&nbsp;&nbsp;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
+import { Link } from "@reach/router";
 
 const { colors, fontSize } = theme;
 
@@ -9,23 +10,22 @@ const SectionHeadingStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-
-const SeeAllLink = styled.a`
-  color: ${colors.fontgrey};
-  letter-spacing: 1.76px;
-  font-size: ${fontSize.sm};
+  .seealllink {
+    color: ${colors.fontgrey};
+    letter-spacing: 1.76px;
+    font-size: ${fontSize.sm};
+  }
 `;
 
 const SectionHeading = (props) => {
   return (
     <SectionHeadingStyle>
-      <a className="styledLink" href="#">
+      <Link className="styledLink" to={props.link}>
         <h2>{props.heading}</h2>
-      </a>
-      <SeeAllLink className="styledLink" href="#">
+      </Link>
+      <Link className="styledLink seealllink" to={props.link}>
         <span>SEE ALL</span>
-      </SeeAllLink>
+      </Link>
     </SectionHeadingStyle>
   );
 };

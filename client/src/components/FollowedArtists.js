@@ -48,10 +48,8 @@ const FollowedArtists = (props) => {
         </SectionHeadingStyle>
         {followedArtists ? (
           followedArtists.map((objArtist) => (
-            <a
-              href={objArtist.external_urls.spotify}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to={`/artist/${objArtist.id}`}
               key={objArtist.name.replace(" ", "").toLowerCase()}
             >
               <SectionSong>
@@ -63,7 +61,7 @@ const FollowedArtists = (props) => {
                   <ArtistNames>Artist</ArtistNames>
                 </SectionSongArtists>
               </SectionSong>
-            </a>
+            </Link>
           ))
         ) : (
           <h1>No Data</h1>

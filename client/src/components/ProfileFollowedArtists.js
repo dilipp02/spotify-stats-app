@@ -25,13 +25,11 @@ const ProfileFollowedArtists = (props) => {
 
   return (
     <SavedTracks>
-      <SectionHeading heading="FollowedArtists" />
+      <SectionHeading heading="FollowedArtists" link="/artists" />
       {followedArtists ? (
         followedArtists.map((objArtist) => (
-          <a
-            href={objArtist.external_urls.spotify}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to={`/artist/${objArtist.id}`}
             key={objArtist.name.replace(" ", "").toLowerCase()}
           >
             <SectionSong>
@@ -43,7 +41,7 @@ const ProfileFollowedArtists = (props) => {
                 <ArtistNames>Artist</ArtistNames>
               </SectionSongArtists>
             </SectionSong>
-          </a>
+          </Link>
         ))
       ) : (
         <h1>No Data</h1>

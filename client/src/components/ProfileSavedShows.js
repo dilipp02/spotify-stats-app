@@ -20,7 +20,7 @@ const ImageDiv = styled.div`
 const ProfileSavedShows = (props) => {
   return (
     <SavedTracks>
-      <SectionHeading heading="Saved Shows" />
+      <SectionHeading heading="Saved Shows" link="/albumsandshows" />
       {props.shows ? (
         props.shows.items.slice(0, 6).map((objTrack) => (
           <a
