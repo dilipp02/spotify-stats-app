@@ -1,10 +1,24 @@
+require("dotenv").config({ path: __dirname + "/.env" });
+
+const CLIENT_ID = process.env.CLIENT_ID || "f07ad09fc74d4e03a045e09717fb51ad";
+const CLIENT_SECRET =
+  process.env.CLIENT_SECRET || "24db1d252c354aa1b5ddd7c1d97c9964";
+let REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:5000/callback";
+let FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:3000";
+const PORT = process.env.PORT || 5000;
+
+console.log(CLIENT_ID);
+
+if (process.env.NODE_ENV !== "production") {
+  REDIRECT_URI = "http://localhost:5000/callback";
+  FRONTEND_URI = "http://localhost:3000";
+}
+
 const express = require("express");
 const path = require("path");
 const querystring = require("querystring");
 const request = require("request");
 const app = express();
-const client_id = "f07ad09fc74d4e03a045e09717fb51ad";
-const client_secret = "24db1d252c354aa1b5ddd7c1d97c9964";
 
 function generateRandomString(length) {
   const possible =
@@ -31,9 +45,9 @@ app.get("/login", (req, res) => {
 
   res.redirect(
     `https://accounts.spotify.com/authorize?${querystring.stringify({
-      client_id: client_id,
+      client_id: CLIENT_ID,
       response_type: "code",
-      redirect_uri: "http://localhost:5000/callback",
+      redirect_uri: REDIRECT_URI,
       state: state,
       scope: scope,
     })}`
@@ -47,12 +61,12 @@ app.get("/callback", (req, res) => {
     url: "https://accounts.spotify.com/api/token",
     form: {
       code: code,
-      redirect_uri: "http://localhost:5000/callback",
+      redirect_uri: REDIRECT_URI,
       grant_type: "authorization_code",
     },
     headers: {
       Authorization: `Basic ${new Buffer.from(
-        `${client_id}:${client_secret}`
+        `${CLIENT_ID}:${CLIENT_SECRET}`
       ).toString("base64")}`,
     },
     json: true,
@@ -65,7 +79,7 @@ app.get("/callback", (req, res) => {
 
       // we can also pass the token to the browser to make requests from there
       res.redirect(
-        `http://localhost:3000/#${querystring.stringify({
+        `${FRONTEND_URI}/#${querystring.stringify({
           access_token,
           refresh_token,
         })}`
@@ -80,4 +94,6 @@ app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./client/public", "index.html"));
 });
 
-app.listen(5000, () => console.log("Listening on http://localhost:5000"));
+app.listen(PORT, function () {
+  console.warn(`Node cluster worker ${process.pid}: listening on port ${PORT}`);
+});
