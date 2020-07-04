@@ -7,8 +7,6 @@ let REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:5000/callback";
 let FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:3000";
 const PORT = process.env.PORT || 5000;
 
-console.log(CLIENT_ID);
-
 if (process.env.NODE_ENV !== "production") {
   REDIRECT_URI = "http://localhost:5000/callback";
   FRONTEND_URI = "http://localhost:3000";
@@ -33,10 +31,10 @@ function generateRandomString(length) {
 
 const state = generateRandomString(16);
 
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.get("/", function (req, res) {
-  res.render(path.resolve(__dirname, "./client/build/index.html"));
+  res.render(path.resolve(__dirname, "../client/build/index.html"));
 });
 
 app.get("/login", (req, res) => {
@@ -91,7 +89,7 @@ app.get("/callback", (req, res) => {
 });
 
 app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/public", "index.html"));
+  response.sendFile(path.resolve(__dirname, "../client/public", "index.html"));
 });
 
 app.listen(PORT, function () {
