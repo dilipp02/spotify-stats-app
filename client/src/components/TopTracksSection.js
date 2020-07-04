@@ -59,9 +59,7 @@ const TopTrackSection = (props) => {
     <TracksStyle>
       <SectionHeadingStyle>
         <SectionTitleDiv>
-          <a className="styledLink" href="#">
-            <h2>Top Tracks</h2>
-          </a>
+          <h2>Top Tracks</h2>
         </SectionTitleDiv>
         <TopTracksButton
           onClick={currentTracksFunc}
@@ -116,10 +114,13 @@ const TopTrackSection = (props) => {
                       </span>
                     </Link>
                   ))}
-                  <ArtistNames>
-                    &nbsp;&middot;&nbsp;&nbsp;
-                    {objTrack.album.name}
-                  </ArtistNames>
+                  &nbsp;&middot;&nbsp;&nbsp;
+                  <Link
+                    to={`/album/${objTrack.album.id}`}
+                    className="styledLink artistlink"
+                  >
+                    <span> {objTrack.album.name}</span>
+                  </Link>
                 </TracksNameSection>
                 <TimeStyle>{formatDuration(objTrack.duration_ms)}</TimeStyle>
               </SavedTracks>

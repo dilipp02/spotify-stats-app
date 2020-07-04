@@ -48,10 +48,13 @@ const TrackSection = (props) => {
                     </span>
                   </Link>
                 ))}
-                <ArtistNames>
-                  &nbsp;&middot;&nbsp;&nbsp;
-                  {objTrack.track.album.name}
-                </ArtistNames>
+                &nbsp;&middot;&nbsp;&nbsp;
+                <Link
+                  to={`/album/${objTrack.track.album.id}`}
+                  className="styledLink artistlink"
+                >
+                  <span> {objTrack.track.album.name}</span>
+                </Link>
               </TracksNameSection>
               <TimeStyle>
                 {formatDuration(objTrack.track.duration_ms)}

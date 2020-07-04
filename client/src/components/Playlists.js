@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoadingIndicator from "./LoadingIndicator";
 import { PageStyle } from "../style/PageStyle";
 import styled from "styled-components/macro";
+import { Link } from "@reach/router";
 import { getPlaylists } from "../spotify";
 import theme from "../style/theme";
-import playlistss from "../samp/playlists.json";
+// import playlistss from "../samp/playlists.json";
 import { ArtistNames } from "../style/SpotifyBlock";
 
-const { spacing } = theme;
+const { spacing, transition } = theme;
 
 const GridDiv = styled.div`
   margin-top: ${spacing.xxl};
@@ -18,6 +19,7 @@ const GridDiv = styled.div`
   img {
     max-height: 100%;
     width: 100%;
+    transition: ${transition};
   }
 `;
 
@@ -46,29 +48,31 @@ export const PlaylistInfo = styled.div`
 `;
 
 const Playlists = () => {
-  //   getPlaylists().then((res) => console.log(JSON.stringify(res)));
+  // getPlaylists().then((res) => console.log(JSON.stringify(res)));
 
-  const [playlists, setPlaylists] = useState(playlistss);
+  const [playlists, setPlaylists] = useState(null);
+
+  useEffect(() => {
+    getPlaylists().then((pl) => setPlaylists(pl));
+  }, []);
 
   return playlists ? (
     <PageStyle>
       <SectionHeadingStyle>
         <SectionTitleDiv>
-          <a className="styledLink" href="#">
-            <h2>Your Playlists</h2>
-          </a>
+          <h2>Your Playlists</h2>
         </SectionTitleDiv>
       </SectionHeadingStyle>
       <GridDiv>
-        {playlists.data ? (
-          playlists.data.items.map((objPlaylists) => (
-            <a href="#">
+        {playlists.data.items.length ? (
+          playlists.data.items.map((objPlaylist) => (
+            <Link to={`/playlist/${objPlaylist.id}`} key={objPlaylist.id}>
               <PlaylistInfo>
-                <img src={objPlaylists.images[0].url} alt={objPlaylists.name} />
-                <h3>{objPlaylists.name}</h3>
-                <ArtistNames>{objPlaylists.tracks.total} Tracks</ArtistNames>
+                <img src={objPlaylist.images[0].url} alt={objPlaylist.name} />
+                <h3>{objPlaylist.name}</h3>
+                <ArtistNames>{objPlaylist.tracks.total} Tracks</ArtistNames>
               </PlaylistInfo>
-            </a>
+            </Link>
           ))
         ) : (
           <h1>No data</h1>

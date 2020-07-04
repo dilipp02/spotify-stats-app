@@ -9,6 +9,7 @@ import {
 } from "../style/SpotifyBlock";
 import { TracksStyle, ShowButtonDiv, ShowButton } from "../style/TracksStyle";
 import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
+import { Link } from "@reach/router";
 
 const ImageDiv = styled.div`
   padding-bottom: 100%;
@@ -37,19 +38,12 @@ const SavedShows = (props) => {
       <SavedTracks>
         <SectionHeadingStyle>
           <SectionTitleDiv>
-            <a className="styledLink" href="#">
-              <h2>Saved Shows</h2>
-            </a>
+            <h2>Saved Shows</h2>
           </SectionTitleDiv>
         </SectionHeadingStyle>
-        {savedShows ? (
+        {savedShows.length ? (
           savedShows.map((objTrack) => (
-            <a
-              href={objTrack.show.external_urls.spotify}
-              target="_blank"
-              rel="noreferrer"
-              key={objTrack.show.name.replace(" ", "").toLowerCase()}
-            >
+            <Link to={`/show/${objTrack.show.id}`} key={objTrack.show.id}>
               <SectionSong>
                 <ImageDiv>
                   <img
@@ -62,14 +56,14 @@ const SavedShows = (props) => {
                   <ArtistNames>{objTrack.show.publisher}</ArtistNames>
                 </SectionSongArtists>
               </SectionSong>
-            </a>
+            </Link>
           ))
         ) : (
           <h1>No Data</h1>
         )}
       </SavedTracks>
       <ShowButtonDiv>
-        {savedShows ? (
+        {savedShows.length ? (
           <ShowButton onClick={showMoreTracks}>
             SHOW {buttonSavedTracks.toUpperCase() + "  "}
             <i

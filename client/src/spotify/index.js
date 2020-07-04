@@ -203,3 +203,12 @@ export const unfollowArtist = (artistId) => {
   const url = `https://api.spotify.com/v1/me/following?type=artist&ids=${artistId}`;
   return axios({ method: "delete", url, headers });
 };
+
+export const getPlaylist = (playlistId) =>
+  axios.get(`https://api.spotify.com/v1/playlists/${playlistId}`, { headers });
+
+export const getAlbum = (albumId) =>
+  axios.get(`https://api.spotify.com/v1/albums/${albumId}`, { headers });
+
+export const getShow = (showId) =>
+  axios.get(`https://api.spotify.com/v1/shows/${showId}`, { headers });

@@ -14,14 +14,9 @@ const ProfileSavedAlbums = (props) => {
   return (
     <SavedTracks>
       <SectionHeading heading="Saved Albums" link="/albumsandshows" />
-      {props.albums ? (
+      {props.albums.items.length ? (
         props.albums.items.slice(0, 6).map((objTrack) => (
-          <a
-            href={objTrack.album.external_urls.spotify}
-            target="_blank"
-            rel="noreferrer"
-            key={objTrack.album.name.replace(" ", "").toLowerCase()}
-          >
+          <Link to={`/album/${objTrack.album.id}`} key={objTrack.album.id}>
             <SectionSong>
               <ImageDiv>
                 <img
@@ -33,8 +28,8 @@ const ProfileSavedAlbums = (props) => {
                 <HeadingBlock>{objTrack.album.name}</HeadingBlock>
                 {objTrack.album.artists.map((objArtist, index) => (
                   <Link
-                    key={objArtist.name.replace(" ", "").toLowerCase()}
                     to={`/artist/${objArtist.id}`}
+                    key={objArtist.name.replace(" ", "").toLowerCase()}
                     className="styledLink"
                   >
                     <ArtistNames>
@@ -50,7 +45,7 @@ const ProfileSavedAlbums = (props) => {
                 ))}
               </SectionSongArtists>
             </SectionSong>
-          </a>
+          </Link>
         ))
       ) : (
         <h1>No Data</h1>

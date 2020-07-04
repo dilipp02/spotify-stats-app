@@ -57,6 +57,7 @@ const GlobalStyle = createGlobalStyle`
     a {
         text-decoration: none;
         background-color: transparent;
+        transition: ${transition};
     }
 
     .unStyledLink {

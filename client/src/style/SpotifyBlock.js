@@ -21,6 +21,7 @@ export const SectionSong = styled.div`
     max-height: 100%;
     width: 100%;
     position: absolute;
+    transition: all 0.25s cubic-bezier(0.3, 0, 0.4, 1);
   }
   &:hover {
     img {

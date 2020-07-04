@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 import IconUser from "./icons/user";
+import { Link } from "@reach/router";
 
 const { colors, fontSize, spacing } = theme;
 
@@ -82,17 +83,15 @@ const ProfileUserInfo = (props) => {
           <h1>{props.user.display_name}</h1>
         </a>
         <div>
-          <a href="#" className="styledLink">
+          <span style={greyFont}>
+            <Num>{props.user.followers.total}</Num> FOLLOWERS
+          </span>
+          &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          <Link to="/playlists" className="styledLink">
             <span style={greyFont}>
               <Num>{props.user.followers.total}</Num> PLAYLISTS
             </span>
-          </a>
-          &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
-          <a href="#" className="styledLink">
-            <span style={greyFont}>
-              <Num>{props.user.followers.total}</Num> FOLLOWERS
-            </span>
-          </a>
+          </Link>
         </div>
       </UserInfoNameStats>
     </UserInfo>

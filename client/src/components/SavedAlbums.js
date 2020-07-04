@@ -9,6 +9,7 @@ import {
 } from "../style/SpotifyBlock";
 import { TracksStyle, ShowButtonDiv, ShowButton } from "../style/TracksStyle";
 import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
+import { Link } from "@reach/router";
 
 const SavedAlbums = (props) => {
   const [savedAlbums, setSavedAlbums] = useState(
@@ -31,19 +32,12 @@ const SavedAlbums = (props) => {
       <SavedTracks>
         <SectionHeadingStyle>
           <SectionTitleDiv>
-            <a className="styledLink" href="#">
-              <h2>Saved Albums</h2>
-            </a>
+            <h2>Saved Albums</h2>
           </SectionTitleDiv>
         </SectionHeadingStyle>
-        {savedAlbums ? (
+        {savedAlbums.length ? (
           savedAlbums.map((objTrack) => (
-            <a
-              href={objTrack.album.external_urls.spotify}
-              target="_blank"
-              rel="noreferrer"
-              key={objTrack.album.name.replace(" ", "").toLowerCase()}
-            >
+            <Link to={`/album/${objTrack.album.id}`} key={objTrack.album.id}>
               <SectionSong>
                 <ImageDiv>
                   <img
@@ -74,14 +68,14 @@ const SavedAlbums = (props) => {
                   ))}
                 </SectionSongArtists>
               </SectionSong>
-            </a>
+            </Link>
           ))
         ) : (
           <h1>No Data</h1>
         )}
       </SavedTracks>
       <ShowButtonDiv>
-        {savedAlbums ? (
+        {savedAlbums.length ? (
           <ShowButton onClick={showMoreTracks}>
             SHOW {buttonSavedTracks.toUpperCase() + "  "}
             <i

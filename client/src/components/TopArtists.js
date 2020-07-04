@@ -70,9 +70,7 @@ const TopArtists = (props) => {
       <SavedTracks>
         <SectionHeadingStyle>
           <SectionTitleDiv>
-            <a className="styledLink" href="#">
-              <h2>Top Artists</h2>
-            </a>
+            <h2>Top Artists</h2>
           </SectionTitleDiv>
           <TopTracksButton
             onClick={currentTracksFunc}
@@ -93,7 +91,7 @@ const TopArtists = (props) => {
             <span>4 WEEKS</span>
           </TopTracksButton>
         </SectionHeadingStyle>
-        {followedArtists ? (
+        {followedArtists.length ? (
           followedArtists.map((objArtist) => (
             <Link
               to={`/artist/${objArtist.id}`}

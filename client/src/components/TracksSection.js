@@ -31,9 +31,7 @@ const TrackSection = (props) => {
   return (
     <TracksStyle>
       <div>
-        <a className="styledLink" href="#">
-          <h2>{props.title}</h2>
-        </a>
+        <h2>{props.title}</h2>
       </div>
       {savedtracks ? (
         <div>
@@ -69,10 +67,13 @@ const TrackSection = (props) => {
                       </span>
                     </Link>
                   ))}
-                  <ArtistNames>
-                    &nbsp;&middot;&nbsp;&nbsp;
-                    {objTrack.track.album.name}
-                  </ArtistNames>
+                  &nbsp;&middot;&nbsp;&nbsp;
+                  <Link
+                    to={`/album/${objTrack.track.album.id}`}
+                    className="styledLink artistlink"
+                  >
+                    <span> {objTrack.track.album.name}</span>
+                  </Link>
                 </TracksNameSection>
                 <TimeStyle>
                   {formatDuration(objTrack.track.duration_ms)}

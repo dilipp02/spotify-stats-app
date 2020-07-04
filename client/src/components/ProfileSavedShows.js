@@ -8,6 +8,7 @@ import {
   ArtistNames,
   HeadingBlock,
 } from "../style/SpotifyBlock";
+import { Link } from "@reach/router";
 
 const ImageDiv = styled.div`
   padding-bottom: 100%;
@@ -21,14 +22,9 @@ const ProfileSavedShows = (props) => {
   return (
     <SavedTracks>
       <SectionHeading heading="Saved Shows" link="/albumsandshows" />
-      {props.shows ? (
+      {props.shows.items.length ? (
         props.shows.items.slice(0, 6).map((objTrack) => (
-          <a
-            href={objTrack.show.external_urls.spotify}
-            target="_blank"
-            rel="noreferrer"
-            key={objTrack.show.name.replace(" ", "").toLowerCase()}
-          >
+          <Link to={`/show/${objTrack.show.id}`} key={objTrack.show.id}>
             <SectionSong>
               <ImageDiv>
                 <img
@@ -41,7 +37,7 @@ const ProfileSavedShows = (props) => {
                 <ArtistNames>{objTrack.show.publisher}</ArtistNames>
               </SectionSongArtists>
             </SectionSong>
-          </a>
+          </Link>
         ))
       ) : (
         <h1>No Data</h1>

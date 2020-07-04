@@ -41,12 +41,10 @@ const FollowedArtists = (props) => {
       <SavedTracks>
         <SectionHeadingStyle>
           <SectionTitleDiv>
-            <a className="styledLink" href="#">
-              <h2>Followed Artists</h2>
-            </a>
+            <h2>Followed Artists</h2>
           </SectionTitleDiv>
         </SectionHeadingStyle>
-        {followedArtists ? (
+        {followedArtists.length ? (
           followedArtists.map((objArtist) => (
             <Link
               to={`/artist/${objArtist.id}`}

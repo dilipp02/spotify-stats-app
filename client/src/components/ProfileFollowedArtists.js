@@ -26,7 +26,7 @@ const ProfileFollowedArtists = (props) => {
   return (
     <SavedTracks>
       <SectionHeading heading="FollowedArtists" link="/artists" />
-      {followedArtists ? (
+      {followedArtists.length ? (
         followedArtists.map((objArtist) => (
           <Link
             to={`/artist/${objArtist.id}`}

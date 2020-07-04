@@ -15,6 +15,7 @@ export const SavedTracks = styled.div`
   transition: ${transition};
   img {
     margin: 0px ${spacing.base};
+    transition: ${transition};
   }
   &:hover {
     background-color: ${colors.backgroundgrey};

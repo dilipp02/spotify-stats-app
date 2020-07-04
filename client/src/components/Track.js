@@ -14,6 +14,7 @@ import {
   saveTrack,
   deleteTrack,
 } from "../spotify";
+import { Link } from "@reach/router";
 
 const { colors, fontSize, spacing } = theme;
 
@@ -60,6 +61,7 @@ const PlayButton = styled.button`
   color: ${colors.white};
   background-color: ${colors.green};
   padding: ${spacing.m} ${spacing.xl};
+  font-size: ${fontSize.m};
   &:hover {
     background-color: ${colors.highlightgreen};
   }
@@ -96,7 +98,7 @@ const AudioFeaturesDiv = styled.div`
 `;
 
 const LikeTrackButton = styled.button`
-  margin: ${spacing.xxl};
+  margin: 0px ${spacing.xxl};
   padding: 0px;
   background: transparent;
   font-size: 36px;
@@ -155,17 +157,20 @@ const Track = (props) => {
   return track && trackAudioFeatures ? (
     <PageStyle>
       <TrackInfo>
-        <img src={track.album.images[1].url} alt={track.name} />
+        <img
+          src={track.album.images[1].url}
+          alt={track.name}
+          height="300px"
+          width="300px"
+        />
         <div className="flexitem">
           <h1 className="tracktitle">{track.name}</h1>
           <div>
             {track.artists.map((objArtist, index) => (
-              <a
+              <Link
+                to={`/artist/${objArtist.id}`}
                 key={objArtist.name.replace(" ", "").toLowerCase()}
-                href={objArtist.external_urls.spotify}
                 className="styledLink tracktitleinfo"
-                target="_blank"
-                rel="noreferrer"
               >
                 <span>
                   {" "}
@@ -176,18 +181,17 @@ const Track = (props) => {
                     <span> </span>
                   )}
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
           <div className="albuminfo">
-            <a
-              href="#"
+            <Link
+              to={`/album/${track.album.id}`}
+              key={track.album.id}
               className="styledLink albumname"
-              target="_blank"
-              rel="noreferrer"
             >
               <span>{track.album.name}</span>
-            </a>
+            </Link>
             <span className="albumname">
               &nbsp;&nbsp;&middot;&nbsp;&nbsp;
               {getYear(track.album.release_date)}
@@ -199,9 +203,7 @@ const Track = (props) => {
               target="_blank"
               rel="noreferrer"
             >
-              <PlayButton>
-                <h3>Play On Spotify</h3>
-              </PlayButton>
+              <PlayButton>PLAY ON SPOTIFY</PlayButton>
             </a>
             <LikeTrackButton onClick={toggleLike}>
               {savedTrackStatus ? (
