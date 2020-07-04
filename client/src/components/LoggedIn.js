@@ -10,6 +10,8 @@ import Playlists from "./Playlists";
 import Track from "./Track";
 import Artist from "./Artist";
 import Playlist from "./Playlist";
+import Album from "./Album";
+import Show from "./Show";
 
 const AppDiv = styled.div`
   display: flex;
@@ -34,6 +36,8 @@ const LoggedIn = () => {
           <Track path="/track/:trackId" />
           <Artist path="/artist/:artistId" />
           <Playlist path="/playlist/:playlistId" />
+          <Album path="/album/:albumId" />
+          <Show path="/show/:showId" />
         </Router>
       </Content>
     </AppDiv>

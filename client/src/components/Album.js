@@ -70,6 +70,8 @@ const Album = (props) => {
     getAlbum(props.albumId).then((alb) => setAlbum(alb.data));
   }, []);
 
+  console.log(album);
+
   return album ? (
     <PageStyle>
       <TrackInfo>
