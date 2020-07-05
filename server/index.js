@@ -33,6 +33,9 @@ function generateRandomString(length) {
 const state = generateRandomString(16);
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.set("views", path.resolve(__dirname, "../client/public/views"));
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "html");
 
 app.use(
   bodyParser.urlencoded({
@@ -44,6 +47,8 @@ app.use(bodyParser.json());
 app.get("/", function (req, res) {
   res.render(path.resolve(__dirname, "../client/build/index.html"));
 });
+
+// console.log(path.resolve(__dirname, "../client/build/index.html"));
 
 app.get("/login", (req, res) => {
   const scope =
