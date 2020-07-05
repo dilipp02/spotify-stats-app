@@ -33,7 +33,6 @@ function generateRandomString(length) {
 const state = generateRandomString(16);
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
-app.set("views", __dirname + "/public/views");
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 
