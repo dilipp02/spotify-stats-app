@@ -43,6 +43,9 @@ const UserInfoNameStats = styled.div`
       text-decoration: none;
     }
   }
+  .greyfont {
+    color: ${colors.fontgrey};
+  }
 `;
 
 const Num = styled.span`
@@ -51,10 +54,6 @@ const Num = styled.span`
   font-size: ${fontSize.l};
   margin: 0px ${spacing.m};
 `;
-
-const greyFont = {
-  color: colors.fontgrey,
-};
 
 const ProfileUserInfo = (props) => {
   return (
@@ -83,14 +82,13 @@ const ProfileUserInfo = (props) => {
           <h1>{props.user.display_name}</h1>
         </a>
         <div>
-          <span style={greyFont}>
+          <span className="greyfont">
             <Num>{props.user.followers.total}</Num> FOLLOWERS
           </span>
           &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
-          <Link to="/playlists" className="styledLink">
-            <span style={greyFont}>
-              <Num>{props.user.followers.total}</Num> PLAYLISTS
-            </span>
+          <Num>{props.user.followers.total}</Num>
+          <Link to="/playlists" className="styledLink greyfont">
+            <span>PLAYLISTS</span>
           </Link>
         </div>
       </UserInfoNameStats>

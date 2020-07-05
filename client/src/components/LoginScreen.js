@@ -2,7 +2,10 @@ import React from "react";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 const { colors } = theme;
-// const LOGIN_URI =
+const LOGIN_URI =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:5000/login"
+    : "https://spotify-stats-application.herokuapp.com/login";
 
 const LoginScreenStyle = styled.div`
   display: flex;
@@ -37,7 +40,7 @@ const LoginScreen = () => {
   return (
     <LoginScreenStyle>
       <LoginHeading> Welcome to Spotify Stats</LoginHeading>
-      <a href="http://localhost:5000/login">
+      <a href={LOGIN_URI}>
         <LoginButton>
           <h1>LOGIN TO SPOTIFY </h1>
         </LoginButton>

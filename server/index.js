@@ -16,6 +16,7 @@ const express = require("express");
 const path = require("path");
 const querystring = require("querystring");
 const request = require("request");
+const bodyParser = require("body-parser");
 const app = express();
 
 function generateRandomString(length) {
@@ -32,6 +33,16 @@ function generateRandomString(length) {
 const state = generateRandomString(16);
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.set("views", __dirname + "/public/views");
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "html");
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
   res.render(path.resolve(__dirname, "../client/build/index.html"));
