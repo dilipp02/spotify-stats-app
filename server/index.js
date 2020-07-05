@@ -34,7 +34,6 @@ const state = generateRandomString(16);
 
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.engine("html", require("ejs").renderFile);
-app.set("view engine", "html");
 
 app.use(
   bodyParser.urlencoded({
