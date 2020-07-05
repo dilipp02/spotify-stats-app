@@ -45,7 +45,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
-  res.render(path.resolve(__dirname, "index.html"));
+  res.render("index");
 });
 
 // console.log(path.resolve(__dirname, "../client/build/index.html"));
