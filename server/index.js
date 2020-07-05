@@ -1,4 +1,4 @@
-require("dotenv").config({ path: __dirname + "/.env" });
+require("dotenv").config();
 
 const CLIENT_ID = process.env.CLIENT_ID || "f07ad09fc74d4e03a045e09717fb51ad";
 const CLIENT_SECRET =
@@ -45,7 +45,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
-  res.render(path.resolve(__dirname, "../client/build/index.html"));
+  res.render(path.resolve(__dirname, "index.html"));
 });
 
 // console.log(path.resolve(__dirname, "../client/build/index.html"));
