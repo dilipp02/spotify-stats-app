@@ -1,15 +1,16 @@
 require("dotenv").config();
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const CLIENT_ID = process.env.CLIENT_ID || "f07ad09fc74d4e03a045e09717fb51ad";
+const CLIENT_SECRET =
+  process.env.CLIENT_SECRET || "24db1d252c354aa1b5ddd7c1d97c9964";
 let REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:5000/callback";
 let FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:3000";
 const PORT = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV !== "production") {
-  REDIRECT_URI = "http://localhost:5000/callback";
-  FRONTEND_URI = "http://localhost:3000";
-}
+// if (process.env.NODE_ENV !== "production") {
+//   REDIRECT_URI = "http://localhost:5000/callback";
+//   FRONTEND_URI = "http://localhost:3000";
+// }
 
 const express = require("express");
 const path = require("path");
@@ -105,29 +106,29 @@ app.get("/callback", (req, res) => {
   }
 });
 
-app.get("/refresh_token", (req, res) => {
-  const refresh_token = req.refresh_token;
-  const authOptions = {
-    url: "https://accounts.spotify.com/api/token",
-    form: {
-      grant_type: "refresh_token",
-      refresh_token: refresh_token,
-    },
-    headers: {
-      Authorization: `Basic ${new Buffer.from(
-        `${CLIENT_ID}:${CLIENT_SECRET}`
-      ).toString("base64")}`,
-    },
-    json: true,
-  };
+// app.get("/refresh_token", (req, res) => {
+//   const refresh_token = req.refresh_token;
+//   const authOptions = {
+//     url: "https://accounts.spotify.com/api/token",
+//     form: {
+//       grant_type: "refresh_token",
+//       refresh_token: refresh_token,
+//     },
+//     headers: {
+//       Authorization: `Basic ${new Buffer.from(
+//         `${CLIENT_ID}:${CLIENT_SECRET}`
+//       ).toString("base64")}`,
+//     },
+//     json: true,
+//   };
 
-  request.post(authOptions, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      const access_token = body.access_token;
-      res.send({ access_token });
-    }
-  });
-});
+//   request.post(authOptions, (error, response, body) => {
+//     if (!error && response.statusCode === 200) {
+//       const access_token = body.access_token;
+//       res.send({ access_token });
+//     }
+//   });
+// });
 
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "../client/public", "index.html"));

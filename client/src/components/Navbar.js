@@ -39,22 +39,19 @@ const NavbarItems = styled.ul`
   padding: 0px ${spacing.m};
 `;
 
-const NavbarItem = styled(Link)`
+const NavbarItemDiv = styled.div`
   flex: 1;
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 28px 0px;
-  color: ${colors.fontgrey};
-  &:hover {
-    color: ${colors.white};
-  }
-  &.active {
+  .active {
     color: ${colors.white};
     background-color: ${colors.backgroundgrey};
     border-radius: ${spacing.s};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -76,9 +73,24 @@ const GithubLogo = styled.div`
   }
 `;
 
-const Navbar = () => {
-  const [active, setActive] = useState("Profile");
+const Samp = styled(Link)`
+  width: 100%;
+  height: 100%;
+  color: ${colors.fontgrey};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    color: ${colors.white};
+  }
+`;
 
+const isActive = ({ isCurrent }) =>
+  isCurrent ? { className: "active" } : null;
+
+const NavbarItem = (props) => <Samp getProps={isActive} {...props} />;
+
+const Navbar = () => {
   return (
     <NavDiv>
       <NavNav>
@@ -88,76 +100,56 @@ const Navbar = () => {
           </Link>
         </SpotifyLogo>
         <NavbarItems>
-          <NavbarItem
-            to="/"
-            className={active === "Profile" ? "active" : ""}
-            onClick={() => {
-              setActive("Profile");
-            }}
-          >
-            <span>
-              <NavbarIcon>
-                <i className="fas fa-user"></i>
-              </NavbarIcon>
-              Profile
-            </span>
-          </NavbarItem>
-          <NavbarItem
-            to="/tracks"
-            className={active === "Tracks" ? "active" : ""}
-            onClick={() => {
-              setActive("Tracks");
-            }}
-          >
-            <span>
-              <NavbarIcon>
-                <i className="fas fa-compact-disc"></i>
-              </NavbarIcon>
-              Tracks
-            </span>
-          </NavbarItem>
-          <NavbarItem
-            to="/artists"
-            className={active === "Artists" ? "active" : ""}
-            onClick={() => {
-              setActive("Artists");
-            }}
-          >
-            <span>
-              <NavbarIcon>
-                <i className="fas fa-microphone-alt"></i>
-              </NavbarIcon>
-              Artists
-            </span>
-          </NavbarItem>
-          <NavbarItem
-            to="/playlists"
-            className={active === "Playlists" ? "active" : ""}
-            onClick={() => {
-              setActive("Playlists");
-            }}
-          >
-            <span>
-              <NavbarIcon>
-                <i className="fas fa-file-audio"></i>
-              </NavbarIcon>
-              Playlists
-            </span>
-          </NavbarItem>
-          <NavbarItem
-            to="/albumsandshows"
-            className={active === "Albums&Shows" ? "active" : ""}
-            onClick={() => {
-              setActive("Albums&Shows");
-            }}
-          >
-            <span>
-              <NavbarIcon>
-                <i className="fas fa-music"></i>
-              </NavbarIcon>
-              Albums & Shows
-            </span>
-          </NavbarItem>
+          <NavbarItemDiv>
+            <NavbarItem to="/">
+              <span>
+                <NavbarIcon>
+                  <i className="fas fa-user"></i>
+                </NavbarIcon>
+                Profile
+              </span>
+            </NavbarItem>
+          </NavbarItemDiv>
+          <NavbarItemDiv>
+            <NavbarItem to="/tracks">
+              <span>
+                <NavbarIcon>
+                  <i className="fas fa-compact-disc"></i>
+                </NavbarIcon>
+                Tracks
+              </span>
+            </NavbarItem>
+          </NavbarItemDiv>
+          <NavbarItemDiv>
+            <NavbarItem to="/artists">
+              <span>
+                <NavbarIcon>
+                  <i className="fas fa-microphone-alt"></i>
+                </NavbarIcon>
+                Artists
+              </span>
+            </NavbarItem>
+          </NavbarItemDiv>
+          <NavbarItemDiv>
+            <NavbarItem to="/playlists">
+              <span>
+                <NavbarIcon>
+                  <i className="fas fa-file-audio"></i>
+                </NavbarIcon>
+                Playlists
+              </span>
+            </NavbarItem>
+          </NavbarItemDiv>
+          <NavbarItemDiv>
+            <NavbarItem to="/albumsandshows">
+              <span>
+                <NavbarIcon>
+                  <i className="fas fa-music"></i>
+                </NavbarIcon>
+                Albums & Shows
+              </span>
+            </NavbarItem>
+          </NavbarItemDiv>
         </NavbarItems>
         <GithubLogo>
           <a
