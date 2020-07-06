@@ -118,23 +118,20 @@ const Album = (props) => {
             <span>{album.tracks.total} tracks</span>
           </div>
           <div className="buttons">
-            <a href="#" target="_blank" rel="noreferrer">
+            <a
+              href={album.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <PlayButton>
                 <h3>PLAY ON SPOTIFY</h3>
               </PlayButton>
             </a>
-            <Link to="/recommendations">
-              <PlayButton>
-                <h3>GET RECOMMENDATIONS</h3>
-              </PlayButton>
-            </Link>
           </div>
         </div>
       </TrackInfo>
       <div>
-        <a className="styledLink" href="#">
-          <h2>Tracks</h2>
-        </a>
+        <h2>Tracks</h2>
       </div>
       <div>
         {album.tracks.items.map((objTrack) => (

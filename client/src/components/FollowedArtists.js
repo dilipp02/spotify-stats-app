@@ -9,8 +9,8 @@ import {
   HeadingBlock,
 } from "../style/SpotifyBlock";
 import { TracksStyle, ShowButtonDiv, ShowButton } from "../style/TracksStyle";
-import { getFollowedArtists } from "../spotify";
 import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
+import NoData from "./NoData";
 
 const ImageDiv = styled.div`
   padding-bottom: 100%;
@@ -62,11 +62,16 @@ const FollowedArtists = (props) => {
             </Link>
           ))
         ) : (
-          <h1>No Data</h1>
+          <NoData
+            type="artist"
+            desc="Follow your first artist"
+            spotifyLink="https://open.spotify.com/search"
+            btnName="Find Artists"
+          />
         )}
       </SavedTracks>
       <ShowButtonDiv>
-        {followedArtists ? (
+        {followedArtists.length ? (
           <ShowButton onClick={showMoreTracks}>
             SHOW {buttonSavedTracks.toUpperCase() + "  "}
             <i

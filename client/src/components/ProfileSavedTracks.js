@@ -2,7 +2,6 @@ import React from "react";
 import MusicIcon from "./icons/MusicIcon";
 import { formatDuration } from "../utils";
 import { Link } from "@reach/router";
-import { ArtistNames } from "../style/SpotifyBlock";
 import {
   TracksStyle,
   SavedTracks,
@@ -10,12 +9,13 @@ import {
   TimeStyle,
 } from "../style/TracksStyle";
 import SectionHeading from "./SectionHeading";
+import NoData from "./NoData";
 
 const TrackSection = (props) => {
   return (
     <TracksStyle>
       <SectionHeading heading="Saved Tracks" link="/tracks" />
-      {props.tracks ? (
+      {props.tracks.items.length ? (
         props.tracks.items.slice(0, 5).map((objTrack) => (
           <Link
             to={`/track/${objTrack.track.id}`}
@@ -48,7 +48,7 @@ const TrackSection = (props) => {
                     </span>
                   </Link>
                 ))}
-                &nbsp;&middot;&nbsp;&nbsp;
+                &nbsp;&middot;&nbsp;
                 <Link
                   to={`/album/${objTrack.track.album.id}`}
                   className="styledLink artistlink"
@@ -63,7 +63,12 @@ const TrackSection = (props) => {
           </Link>
         ))
       ) : (
-        <h1>No data</h1>
+        <NoData
+          type="track"
+          desc="Let's find some tracks for you"
+          spotifyLink="https://open.spotify.com/view/new-releases-page"
+          btnName="New Releases"
+        />
       )}
     </TracksStyle>
   );

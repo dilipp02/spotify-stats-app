@@ -9,6 +9,7 @@ import {
   HeadingBlock,
 } from "../style/SpotifyBlock";
 import { Link } from "@reach/router";
+import NoData from "./NoData";
 
 const ProfileSavedAlbums = (props) => {
   return (
@@ -48,7 +49,12 @@ const ProfileSavedAlbums = (props) => {
           </Link>
         ))
       ) : (
-        <h1>No Data</h1>
+        <NoData
+          type="album"
+          desc="Follow your first album"
+          spotifyLink="https://open.spotify.com/search"
+          btnName="Find Albums"
+        />
       )}
     </SavedTracks>
   );

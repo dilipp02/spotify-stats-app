@@ -2,15 +2,9 @@ import React, { useState, useEffect } from "react";
 import LoadingIndicator from "./LoadingIndicator";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
-import { Link } from "@reach/router";
-import {
-  formatDuration,
-  formatWithCommas,
-  formatDurationForHumans,
-} from "../utils";
-import { getPlaylist, getShow } from "../spotify";
+import { formatDuration } from "../utils";
+import { getShow } from "../spotify";
 import { ArtistNames } from "../style/SpotifyBlock";
-import MusicIcon from "./icons/MusicIcon";
 import {
   SavedTracks,
   TracksNameSection,
@@ -107,26 +101,25 @@ const Show = (props) => {
             <span>{show.episodes.total} episodes</span>
           </div>
           <div className="buttons">
-            <a href="#" target="_blank" rel="noreferrer">
+            <a
+              href={show.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <PlayButton>PLAY ON SPOTIFY</PlayButton>
             </a>
-            <Link to="/recommendations">
-              <PlayButton>GET RECOMMENDATIONS</PlayButton>
-            </Link>
           </div>
         </div>
       </TrackInfo>
       <div>
-        <a className="styledLink" href="#">
-          <h2>All Episodes</h2>
-        </a>
+        <h2>All Episodes</h2>
       </div>
       <div>
         {show.episodes.items.map((objTrack) => (
           <a
             href={objTrack.external_urls.spotify}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             key={objTrack.id}
           >
             <SavedTracks>

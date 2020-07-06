@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import MusicIcon from "./icons/MusicIcon";
 import { formatDuration } from "../utils";
 import { Link } from "@reach/router";
-import { ArtistNames } from "../style/SpotifyBlock";
 import {
   TracksStyle,
   SavedTracks,
@@ -11,6 +10,7 @@ import {
   ShowButtonDiv,
   ShowButton,
 } from "../style/TracksStyle";
+import NoData from "./NoData";
 
 const TrackSection = (props) => {
   const [savedtracks, setSavedTracks] = useState(
@@ -28,14 +28,16 @@ const TrackSection = (props) => {
     }
   }
 
+  console.log(savedtracks);
+
   return (
     <TracksStyle>
       <div>
         <h2>{props.title}</h2>
       </div>
-      {savedtracks ? (
-        <div>
-          {savedtracks.map((objTrack) => (
+      <div>
+        {savedtracks.length ? (
+          savedtracks.map((objTrack) => (
             <Link
               to={`/track/${objTrack.track.id}`}
               key={objTrack.track.name.replace(" ", "").toLowerCase()}
@@ -67,7 +69,7 @@ const TrackSection = (props) => {
                       </span>
                     </Link>
                   ))}
-                  &nbsp;&middot;&nbsp;&nbsp;
+                  &nbsp;&middot;&nbsp;
                   <Link
                     to={`/album/${objTrack.track.album.id}`}
                     className="styledLink artistlink"
@@ -80,21 +82,30 @@ const TrackSection = (props) => {
                 </TimeStyle>
               </SavedTracks>
             </Link>
-          ))}
-          <ShowButtonDiv>
-            <ShowButton onClick={showMoreTracks}>
-              SHOW {buttonSavedTracks.toUpperCase() + "  "}
-              <i
-                className={`fas fa-chevron-${
-                  buttonSavedTracks === "more" ? "down" : "up"
-                }`}
-              ></i>
-            </ShowButton>
-          </ShowButtonDiv>
-        </div>
-      ) : (
-        <h1>No data</h1>
-      )}
+          ))
+        ) : (
+          <NoData
+            type="track"
+            desc="Let's find some tracks for you"
+            spotifyLink="https://open.spotify.com/view/new-releases-page"
+            btnName="New Releases"
+          />
+        )}
+      </div>
+      <ShowButtonDiv>
+        {savedtracks.length ? (
+          <ShowButton onClick={showMoreTracks}>
+            SHOW {buttonSavedTracks.toUpperCase() + "  "}
+            <i
+              className={`fas fa-chevron-${
+                buttonSavedTracks === "more" ? "down" : "up"
+              }`}
+            ></i>
+          </ShowButton>
+        ) : (
+          <div></div>
+        )}
+      </ShowButtonDiv>
     </TracksStyle>
   );
 };

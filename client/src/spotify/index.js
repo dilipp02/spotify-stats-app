@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-undef */
 import axios from "axios";
 import { getHashParams } from "../utils";
 
@@ -178,8 +176,8 @@ export const saveTrack = (trackId) => {
   return axios({ method: "put", url, headers });
 };
 
-export const deleteTrack = (artistId) => {
-  const url = `https://api.spotify.com/v1/artists?ids=${artistId}`;
+export const deleteTrack = (trackId) => {
+  const url = `https://api.spotify.com/v1/me/tracks?ids=${trackId}`;
   return axios({ method: "delete", url, headers });
 };
 

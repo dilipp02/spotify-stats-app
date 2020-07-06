@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
-// import { getCurrentTrack } from "../spotify/index";
-import LoadingIndicator from "./LoadingIndicator";
-import player from "../samp/currentPlayer.json";
 import theme from "../style/theme";
-const { colors } = theme;
+import { formatDuration } from "../utils";
+import { checkSavedTracks, deleteTrack, saveTrack } from "../spotify";
+import { useEffect } from "react";
+import LoadingIndicatorDot from "./LoadingIndicatorDot";
+import { Link } from "@reach/router";
+
+const { spacing, colors, transition } = theme;
 
 const NoPlayer = styled.div`
   height: 100%;
@@ -13,80 +16,204 @@ const NoPlayer = styled.div`
   align-items: center;
 `;
 
-const Playing = styled.div`
-  display: flex;
-  justify-content: space-between;
-  height: 100%;
+const PlayerDiv = styled.div`
+  margin-bottom: ${spacing.xxl} 0px;
 `;
 
-const PlayerNames = styled.div`
+const PlayerStyle = styled.div`
+  height: 150px;
+  margin: ${spacing.base} 0px ${spacing.xxl} 0px;
+  background-color: ${colors.backgroundgrey};
+  border-radius: 16px;
+  padding: ${spacing.base};
+`;
+
+const PlayerStyleDiv = styled.div`
   display: flex;
+  justify-content: start;
+  height: 100%;
+  width: 100%;
+  .overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  img {
+    margin-left: ${spacing.base};
+    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+  }
+`;
+
+const Names = styled.div`
+  display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: space-around;
+  margin: ${spacing.base};
+  justify-content: space-evenly;
+  .sectiontitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: ${colors.white};
+  }
+  .artistname {
+    color: ${colors.fontgrey};
+  }
+  .artistlink {
+    color: ${colors.fontgrey};
+  }
+`;
+
+const LikeTrackButton = styled.button`
+  padding: 0px;
+  background: transparent;
+  font-size: 36px;
+  margin-right: ${spacing.base};
+  .filled-heart {
+    color: ${colors.green};
+    &:hover {
+      color: ${colors.highlightgreen};
+      transform: scale(1.06);
+    }
+  }
+  .empty-heart {
+    color: ${colors.fontgrey};
+    &:hover {
+      color: ${colors.white};
+      transform: scale(1.06);
+    }
+  }
+`;
+
+const AudioFeaturesRange = styled.div`
+  margin: 8px 0px;
+  background-color: #535353;
+  border-radius: 30px;
+  height: 16px;
+  width: 100%;
+  .progressbar {
+    width: 0%;
+  }
+`;
+
+const AudioFeaturesRangeProgress = styled.div`
   height: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  width: 0%;
+  background-color: ${colors.green};
+  border-radius: 30px;
+  transition: ${transition};
+  &:hover {
+    background-color: ${colors.highlightgreen};
+  }
 `;
 
-const SectionTitle = styled.h4``;
-
-const ArtistNames = styled.span`
-  color: ${colors.fontgrey};
+const TrackProgressDiv = styled.div`
+  flex: 2;
+  display: flex;
+  align-items: center;
+  .time {
+    margin: 0px ${spacing.m};
+  }
 `;
 
-const Player = () => {
-  // const [player, setPlayer] = useState(null);
+const Player = (props) => {
+  const [player, setPlayer] = useState(props.player);
+  const [isLiked, setLike] = useState(null);
 
-  // async function getPlayer() {
-  //   getCurrentTrack().then((res) => setPlayer(res));
-  // }
+  useEffect(() => {
+    if (player)
+      checkSavedTracks(player.item.id).then((res) => setLike(res.data));
+  }, []);
 
-  // useEffect(() => {
-  //   getPlayer();
-  // }, [setPlayer]);
+  function toggleLike() {
+    if (isLiked[0]) deleteTrack(player.item.id).then(() => setLike([false]));
+    else saveTrack(player.item.id).then(() => setLike([true]));
+  }
 
-  return player ? (
-    player.data ? (
-      <Playing>
-        <img
-          src={player.data.item.album.images[1].url}
-          alt={player.data.item.name}
-          height="118px"
-          width="118px"
-        />
-        <div>
-          <PlayerNames>
-            <a
-              href={player.data.item.external_urls.spotify}
-              className="styledLink"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <SectionTitle>{player.data.item.name}</SectionTitle>
-            </a>
-            <div>
-              {player.data.item.artists.map((obj) => (
-                <a
-                  key={obj.name.replace(" ", "").toLowerCase()}
-                  href={obj.external_urls.spotify}
-                  className="styledLink"
-                  target="_blank"
-                  rel="noreferrer"
+  return (
+    <PlayerDiv>
+      <h2>Current playing</h2>
+      <PlayerStyle>
+        {player ? (
+          isLiked ? (
+            <PlayerStyleDiv>
+              <img
+                src={player.item.album.images[1].url}
+                alt={player.item.name}
+                height="118px"
+                width="118px"
+              />
+              <Names className="overflow">
+                <Link
+                  key={player.item.name.replace(" ", "").toLowerCase()}
+                  to={`/track/${player.item.id}`}
+                  className="styledLink sectiontitle"
                 >
-                  <ArtistNames>{obj.name}, </ArtistNames>
-                </a>
-              ))}
-            </div>
-          </PlayerNames>
-        </div>
-      </Playing>
-    ) : (
-      <NoPlayer>
-        <span>You are not playing any song currently</span>
-      </NoPlayer>
-    )
-  ) : (
-    <LoadingIndicator type="ThreeDots" />
+                  <h2>{player.item.name}</h2>
+                </Link>
+                <div className="overflow">
+                  {player.item.artists.map((objArtist, index) => (
+                    <Link
+                      key={objArtist.name.replace(" ", "").toLowerCase()}
+                      to={`/artist/${objArtist.id}`}
+                      className="styledLink artistlink"
+                    >
+                      <span>
+                        {" "}
+                        {objArtist.name}
+                        {index < player.item.artists.length - 1 ? (
+                          <span>,</span>
+                        ) : (
+                          <span> </span>
+                        )}
+                      </span>
+                    </Link>
+                  ))}
+                  &nbsp;&middot;&nbsp;
+                  <Link
+                    to={`/album/${player.item.album.id}`}
+                    className="styledLink artistlink"
+                  >
+                    <span> {player.item.album.name}</span>
+                  </Link>
+                </div>
+              </Names>
+              <LikeTrackButton onClick={toggleLike}>
+                {isLiked[0] ? (
+                  <i className="fas fa-heart filled-heart"></i>
+                ) : (
+                  <i className="far fa-heart empty-heart"></i>
+                )}
+              </LikeTrackButton>
+              <TrackProgressDiv>
+                <span className="time">
+                  {formatDuration(player.progress_ms)}
+                </span>
+                <AudioFeaturesRange>
+                  <AudioFeaturesRangeProgress
+                    className="progressbar"
+                    style={{
+                      width: `${
+                        (player.progress_ms / player.item.duration_ms) * 100
+                      }%`,
+                    }}
+                  ></AudioFeaturesRangeProgress>
+                </AudioFeaturesRange>
+                <span className="time">
+                  {formatDuration(player.item.duration_ms)}
+                </span>
+              </TrackProgressDiv>
+            </PlayerStyleDiv>
+          ) : (
+            <LoadingIndicatorDot />
+          )
+        ) : (
+          <NoPlayer>
+            <span>You are not playing any song currently</span>
+          </NoPlayer>
+        )}
+      </PlayerStyle>
+    </PlayerDiv>
   );
 };
 

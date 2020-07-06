@@ -7,6 +7,8 @@ import { getPlaylists } from "../spotify";
 import theme from "../style/theme";
 // import playlistss from "../samp/playlists.json";
 import { ArtistNames } from "../style/SpotifyBlock";
+import NoData from "./NoData";
+import PlaylistIcon from "./icons/PlaylistIcon";
 
 const { spacing, transition } = theme;
 
@@ -68,14 +70,23 @@ const Playlists = () => {
           playlists.data.items.map((objPlaylist) => (
             <Link to={`/playlist/${objPlaylist.id}`} key={objPlaylist.id}>
               <PlaylistInfo>
-                <img src={objPlaylist.images[0].url} alt={objPlaylist.name} />
+                {objPlaylist.images.length ? (
+                  <img src={objPlaylist.images[0].url} alt={objPlaylist.name} />
+                ) : (
+                  <PlaylistIcon />
+                )}
                 <h3>{objPlaylist.name}</h3>
                 <ArtistNames>{objPlaylist.tracks.total} Tracks</ArtistNames>
               </PlaylistInfo>
             </Link>
           ))
         ) : (
-          <h1>No data</h1>
+          <NoData
+            type="playlist"
+            desc="Create your first playlist"
+            spotifyLink="https://open.spotify.com/search"
+            btnName="Create Playlist"
+          />
         )}
       </GridDiv>
     </PageStyle>

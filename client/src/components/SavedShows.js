@@ -10,6 +10,7 @@ import {
 import { TracksStyle, ShowButtonDiv, ShowButton } from "../style/TracksStyle";
 import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
 import { Link } from "@reach/router";
+import NoData from "./NoData";
 
 const ImageDiv = styled.div`
   padding-bottom: 100%;
@@ -38,7 +39,7 @@ const SavedShows = (props) => {
       <SavedTracks>
         <SectionHeadingStyle>
           <SectionTitleDiv>
-            <h2>Saved Shows</h2>
+            <h2>Saved Podcasts</h2>
           </SectionTitleDiv>
         </SectionHeadingStyle>
         {savedShows.length ? (
@@ -59,7 +60,12 @@ const SavedShows = (props) => {
             </Link>
           ))
         ) : (
-          <h1>No Data</h1>
+          <NoData
+            type="podcast"
+            desc="Follow your first podcast"
+            spotifyLink="https://open.spotify.com/genre/podcasts-web"
+            btnName="Find Podcasts"
+          />
         )}
       </SavedTracks>
       <ShowButtonDiv>

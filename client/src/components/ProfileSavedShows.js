@@ -9,6 +9,7 @@ import {
   HeadingBlock,
 } from "../style/SpotifyBlock";
 import { Link } from "@reach/router";
+import NoData from "./NoData";
 
 const ImageDiv = styled.div`
   padding-bottom: 100%;
@@ -21,7 +22,7 @@ const ImageDiv = styled.div`
 const ProfileSavedShows = (props) => {
   return (
     <SavedTracks>
-      <SectionHeading heading="Saved Shows" link="/albumsandshows" />
+      <SectionHeading heading="Saved Podcasts" link="/albumsandshows" />
       {props.shows.items.length ? (
         props.shows.items.slice(0, 6).map((objTrack) => (
           <Link to={`/show/${objTrack.show.id}`} key={objTrack.show.id}>
@@ -40,7 +41,12 @@ const ProfileSavedShows = (props) => {
           </Link>
         ))
       ) : (
-        <h1>No Data</h1>
+        <NoData
+          type="podcast"
+          desc="Follow your first podcast"
+          spotifyLink="https://open.spotify.com/genre/podcasts-web"
+          btnName="Find Podcasts"
+        />
       )}
     </SavedTracks>
   );

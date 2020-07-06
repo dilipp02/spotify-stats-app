@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import track from "../samp/track.json";
-// import trackAudioFeatures from "../samp/trackaudiofeatures.json";
 import axios from "axios";
 import LoadingIndicator from "./LoadingIndicator";
 import styled from "styled-components/macro";
@@ -201,7 +199,7 @@ const Track = (props) => {
             <a
               href={track.external_urls.spotify}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <PlayButton>PLAY ON SPOTIFY</PlayButton>
             </a>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 
-const { colors, fontSize, spacing, transition } = theme;
+const { colors, fontSize, transition } = theme;
 
 const AudioFeaturesDiv = styled.div`
   line-height: 32px;

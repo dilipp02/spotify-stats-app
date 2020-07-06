@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import LoadingIndicator from "./LoadingIndicator";
-import savedalbums from "../samp/savedAlbums.json";
-import savedshows from "../samp/savedShows.json";
 import { PageStyle } from "../style/PageStyle";
 import SavedAlbums from "./SavedAlbums";
 import SavedShows from "./SavedShows";

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import LoadingIndicator from "./LoadingIndicator";
-import { Link } from "@reach/router";
 import FollowedArtists from "./FollowedArtists";
 import axios from "axios";
 import {

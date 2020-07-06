@@ -3,7 +3,6 @@ import MusicIcon from "./icons/MusicIcon";
 import { formatDuration } from "../utils";
 import { Link } from "@reach/router";
 import { useEffect } from "react";
-import { ArtistNames } from "../style/SpotifyBlock";
 import {
   TracksStyle,
   SavedTracks,
@@ -14,6 +13,7 @@ import {
   TopTracksButton,
 } from "../style/TracksStyle";
 import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
+import NoData from "./NoData";
 
 const TopTrackSection = (props) => {
   const [currentTracks, setCurrentTracks] = useState(props.longtermtracks);
@@ -32,8 +32,6 @@ const TopTrackSection = (props) => {
       setSavedTracks(currentTracks.items.slice(0, 5));
       setButtonSavedTracks("more");
     }
-    // console.log(savedtracks);
-    // console.log(buttonSavedTracks);
   }
 
   async function currentTracksFunc(e) {
@@ -46,11 +44,6 @@ const TopTrackSection = (props) => {
     setSavedTracks(currentTracks.items.slice(0, 5));
     setActive(e.target.innerText);
     setButtonSavedTracks("more");
-
-    // console.log(currentTracks);
-    // console.log(savedtracks);
-    // console.log(active);
-    // console.log(buttonSavedTracks);
   }
 
   useEffect(() => {});
@@ -80,9 +73,9 @@ const TopTrackSection = (props) => {
           <span>4 WEEKS</span>
         </TopTracksButton>
       </SectionHeadingStyle>
-      {savedtracks ? (
-        <div>
-          {savedtracks.map((objTrack) => (
+      <div>
+        {savedtracks.length ? (
+          savedtracks.map((objTrack) => (
             <Link
               to={`/track/${objTrack.id}`}
               key={objTrack.name.replace(" ", "").toLowerCase()}
@@ -114,7 +107,7 @@ const TopTrackSection = (props) => {
                       </span>
                     </Link>
                   ))}
-                  &nbsp;&middot;&nbsp;&nbsp;
+                  &nbsp;&middot;&nbsp;
                   <Link
                     to={`/album/${objTrack.album.id}`}
                     className="styledLink artistlink"
@@ -125,21 +118,30 @@ const TopTrackSection = (props) => {
                 <TimeStyle>{formatDuration(objTrack.duration_ms)}</TimeStyle>
               </SavedTracks>
             </Link>
-          ))}
-          <ShowButtonDiv>
-            <ShowButton onClick={showMoreTracks}>
-              SHOW {buttonSavedTracks.toUpperCase() + "  "}
-              <i
-                className={`fas fa-chevron-${
-                  buttonSavedTracks === "more" ? "down" : "up"
-                }`}
-              ></i>
-            </ShowButton>
-          </ShowButtonDiv>
-        </div>
-      ) : (
-        <h1>No data</h1>
-      )}
+          ))
+        ) : (
+          <NoData
+            type="track"
+            desc="Let's find some tracks for you"
+            spotifyLink="https://open.spotify.com/view/new-releases-page"
+            btnName="New Releases"
+          />
+        )}
+      </div>
+      <ShowButtonDiv>
+        {savedtracks.length ? (
+          <ShowButton onClick={showMoreTracks}>
+            SHOW {buttonSavedTracks.toUpperCase() + "  "}
+            <i
+              className={`fas fa-chevron-${
+                buttonSavedTracks === "more" ? "down" : "up"
+              }`}
+            ></i>
+          </ShowButton>
+        ) : (
+          <div></div>
+        )}
+      </ShowButtonDiv>
     </TracksStyle>
   );
 };

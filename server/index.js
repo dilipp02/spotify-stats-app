@@ -45,7 +45,7 @@ app.use(
 app.use(bodyParser.json());
 
 app.get("/", function (req, res) {
-  res.render("index");
+  res.render(path.resolve(__dirname, "../client/build/index.html"));
 });
 
 // console.log(path.resolve(__dirname, "../client/build/index.html"));
@@ -97,6 +97,30 @@ app.get("/callback", (req, res) => {
       );
     } else {
       res.redirect(`/#${querystring.stringify({ error: "invalid_token" })}`);
+    }
+  });
+});
+
+app.get("/refresh_token", (req, res) => {
+  const refresh_token = req.refresh_token;
+  const authOptions = {
+    url: "https://accounts.spotify.com/api/token",
+    form: {
+      grant_type: "refresh_token",
+      refresh_token: refresh_token,
+    },
+    headers: {
+      Authorization: `Basic ${new Buffer.from(
+        `${CLIENT_ID}:${CLIENT_SECRET}`
+      ).toString("base64")}`,
+    },
+    json: true,
+  };
+
+  request.post(authOptions, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
+      const access_token = body.access_token;
+      res.send({ access_token });
     }
   });
 });

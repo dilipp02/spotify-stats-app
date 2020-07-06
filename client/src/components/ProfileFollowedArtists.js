@@ -9,6 +9,7 @@ import {
   HeadingBlock,
 } from "../style/SpotifyBlock";
 import SectionHeading from "./SectionHeading";
+import NoData from "./NoData";
 
 const ImageDiv = styled.div`
   padding-bottom: 100%;
@@ -44,7 +45,12 @@ const ProfileFollowedArtists = (props) => {
           </Link>
         ))
       ) : (
-        <h1>No Data</h1>
+        <NoData
+          type="artist"
+          desc="Follow your first artist"
+          spotifyLink="https://open.spotify.com/search"
+          btnName="Find Artists"
+        />
       )}
     </SavedTracks>
   );

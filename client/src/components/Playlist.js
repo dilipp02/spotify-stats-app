@@ -9,13 +9,13 @@ import {
   formatDurationForHumans,
 } from "../utils";
 import { getPlaylist } from "../spotify";
-import { ArtistNames } from "../style/SpotifyBlock";
 import MusicIcon from "./icons/MusicIcon";
 import {
   SavedTracks,
   TracksNameSection,
   TimeStyle,
 } from "../style/TracksStyle";
+import PlaylistIcon from "./icons/PlaylistIcon";
 
 const { colors, fontSize, spacing } = theme;
 
@@ -78,12 +78,16 @@ const Playlist = (props) => {
   return playlist ? (
     <PageStyle>
       <TrackInfo>
-        <img
-          src={playlist.images[0].url}
-          alt={playlist.name}
-          height="300px"
-          width="300px"
-        />
+        {playlist.images.length ? (
+          <img
+            src={playlist.images[0].url}
+            alt={playlist.name}
+            height="300px"
+            width="300px"
+          />
+        ) : (
+          <PlaylistIcon />
+        )}
         <div className="flexitem">
           <h6>{playlist.type.toUpperCase()}</h6>
           <h1 className="tracktitle">{playlist.name}</h1>
@@ -113,19 +117,18 @@ const Playlist = (props) => {
             <span>{playlist.tracks.total} tracks</span>
           </div>
           <div className="buttons">
-            <a href="#" target="_blank" rel="noreferrer">
+            <a
+              href={playlist.external_urls.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <PlayButton>PLAY ON SPOTIFY</PlayButton>
             </a>
-            <Link to="/recommendations">
-              <PlayButton>GET RECOMMENDATIONS</PlayButton>
-            </Link>
           </div>
         </div>
       </TrackInfo>
       <div>
-        <a className="styledLink" href="#">
-          <h2>Tracks</h2>
-        </a>
+        <h2>Tracks</h2>
       </div>
       <div>
         {playlist.tracks.items.map((objTrack) => (
@@ -160,7 +163,7 @@ const Playlist = (props) => {
                     </span>
                   </Link>
                 ))}
-                &nbsp;&middot;&nbsp;&nbsp;
+                &nbsp;&middot;&nbsp;
                 <Link
                   to={`/album/${objTrack.track.album.id}`}
                   className="styledLink artistlink"

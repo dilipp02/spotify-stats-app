@@ -77,7 +77,7 @@ const ProfileUserInfo = (props) => {
           className="unStyledLink"
           href={props.user.external_urls.spotify}
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           <h1>{props.user.display_name}</h1>
         </a>
@@ -86,7 +86,7 @@ const ProfileUserInfo = (props) => {
             <Num>{props.user.followers.total}</Num> FOLLOWERS
           </span>
           &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
-          <Num>{props.user.followers.total}</Num>
+          <Num>{props.playlists.total}</Num>
           <Link to="/playlists" className="styledLink greyfont">
             <span>PLAYLISTS</span>
           </Link>

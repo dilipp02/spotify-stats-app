@@ -10,6 +10,7 @@ import {
 import { TracksStyle, ShowButtonDiv, ShowButton } from "../style/TracksStyle";
 import { SectionHeadingStyle, SectionTitleDiv } from "../style/HeadingStyles";
 import { Link } from "@reach/router";
+import NoData from "./NoData";
 
 const SavedAlbums = (props) => {
   const [savedAlbums, setSavedAlbums] = useState(
@@ -53,7 +54,7 @@ const SavedAlbums = (props) => {
                       href={objArtist.external_urls.spotify}
                       className="styledLink"
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                     >
                       <ArtistNames>
                         {" "}
@@ -71,7 +72,12 @@ const SavedAlbums = (props) => {
             </Link>
           ))
         ) : (
-          <h1>No Data</h1>
+          <NoData
+            type="album"
+            desc="Follow your first album"
+            spotifyLink="https://open.spotify.com/search"
+            btnName="Find Albums"
+          />
         )}
       </SavedTracks>
       <ShowButtonDiv>
