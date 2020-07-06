@@ -62,6 +62,20 @@ const NavbarIcon = styled.span`
   margin-right: 20px;
 `;
 
+const GithubLogo = styled.div`
+  margin-top: 64px;
+  text-align: center;
+  .btn {
+    color: ${colors.fontgrey};
+    background: transparent;
+    font-size: 32px;
+    text-align: center;
+    &:hover {
+      color: ${colors.white};
+    }
+  }
+`;
+
 const Navbar = () => {
   const [active, setActive] = useState("Profile");
 
@@ -145,6 +159,17 @@ const Navbar = () => {
             </span>
           </NavbarItem>
         </NavbarItems>
+        <GithubLogo>
+          <a
+            href="https://github.com/dilipp02/spotify-stats-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button class="btn">
+              <i class="fab fa-github"></i>
+            </button>
+          </a>
+        </GithubLogo>
       </NavNav>
     </NavDiv>
   );
