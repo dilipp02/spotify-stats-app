@@ -1,16 +1,15 @@
 require("dotenv").config();
 
-const CLIENT_ID = process.env.CLIENT_ID || "f07ad09fc74d4e03a045e09717fb51ad";
-const CLIENT_SECRET =
-  process.env.CLIENT_SECRET || "24db1d252c354aa1b5ddd7c1d97c9964";
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 let REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:5000/callback";
 let FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:3000";
 const PORT = process.env.PORT || 5000;
 
-// if (process.env.NODE_ENV !== "production") {
-//   REDIRECT_URI = "http://localhost:5000/callback";
-//   FRONTEND_URI = "http://localhost:3000";
-// }
+if (process.env.NODE_ENV !== "production") {
+  REDIRECT_URI = "http://localhost:5000/callback";
+  FRONTEND_URI = "http://localhost:3000";
+}
 
 const express = require("express");
 const path = require("path");

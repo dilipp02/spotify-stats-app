@@ -157,8 +157,8 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button class="btn">
-              <i class="fab fa-github"></i>
+            <button className="btn">
+              <i className="fab fa-github"></i>
             </button>
           </a>
         </GithubLogo>

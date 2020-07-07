@@ -34,19 +34,29 @@ const TopTrackSection = (props) => {
     }
   }
 
-  async function currentTracksFunc(e) {
-    if (e.target.innerText === "ALL TIME")
-      setCurrentTracks(props.longtermtracks);
-    else if (e.target.innerText === "6 MONTHS")
+  // async function currentTracksFunc() {
+  //   if (e.target.innerText === "ALL TIME")
+  //     setCurrentTracks(props.longtermtracks);
+  //   else if (e.target.innerText === "LAST 6 MONTHS")
+  //     setCurrentTracks(props.mediumtermtracks);
+  //   else setCurrentTracks(props.shorttermtracks);
+
+  //   setSavedTracks(currentTracks.items.slice(0, 5));
+  //   setActive(e.target.innerText);
+  //   setButtonSavedTracks("more");
+  // }
+
+  useEffect(() => {
+    if (active === "ALL TIME") setCurrentTracks(props.longtermtracks);
+    else if (active === "LAST 6 MONTHS")
       setCurrentTracks(props.mediumtermtracks);
     else setCurrentTracks(props.shorttermtracks);
+  }, [active, setActive]);
 
+  useEffect(() => {
     setSavedTracks(currentTracks.items.slice(0, 5));
-    setActive(e.target.innerText);
     setButtonSavedTracks("more");
-  }
-
-  useEffect(() => {});
+  }, [currentTracks]);
 
   return (
     <TracksStyle>
@@ -55,22 +65,22 @@ const TopTrackSection = (props) => {
           <h2>Top Tracks</h2>
         </SectionTitleDiv>
         <TopTracksButton
-          onClick={currentTracksFunc}
+          onClick={() => setActive("ALL TIME")}
           className={active === "ALL TIME" ? "active" : ""}
         >
           <span>ALL TIME</span>
         </TopTracksButton>
         <TopTracksButton
-          onClick={currentTracksFunc}
-          className={active === "6 MONTHS" ? "active" : ""}
+          onClick={() => setActive("LAST 6 MONTHS")}
+          className={active === "LAST 6 MONTHS" ? "active" : ""}
         >
-          <span>6 MONTHS</span>
+          <span>LAST 6 MONTHS</span>
         </TopTracksButton>
         <TopTracksButton
-          onClick={currentTracksFunc}
-          className={active === "4 WEEKS" ? "active" : ""}
+          onClick={() => setActive("LAST 4 WEEKS")}
+          className={active === "LAST 4 WEEKS" ? "active" : ""}
         >
-          <span>4 WEEKS</span>
+          <span>LAST 4 WEEKS</span>
         </TopTracksButton>
       </SectionHeadingStyle>
       <div>

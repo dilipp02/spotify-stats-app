@@ -46,24 +46,17 @@ const TopArtists = (props) => {
     }
   }
 
-  async function currentTracksFunc(e) {
-    if (e.target.innerText === "ALL TIME")
-      setCurrentArtists(props.longtermartists);
-    else if (e.target.innerText === "6 MONTHS")
+  useEffect(() => {
+    if (active === "ALL TIME") setCurrentArtists(props.longtermartists);
+    else if (active === "LAST 6 MONTHS")
       setCurrentArtists(props.mediumtermartists);
     else setCurrentArtists(props.shorttermartists);
+  }, [active, setActive]);
 
+  useEffect(() => {
     setFollowedArtists(currentArtists.items.slice(0, 6));
-    setActive(e.target.innerText);
     setButtonSavedTracks("more");
-
-    // console.log(currentTracks);
-    // console.log(savedtracks);
-    // console.log(active);
-    // console.log(buttonSavedTracks);
-  }
-
-  useEffect(() => {});
+  }, [currentArtists]);
 
   return (
     <TracksStyle>
@@ -73,22 +66,22 @@ const TopArtists = (props) => {
             <h2>Top Artists</h2>
           </SectionTitleDiv>
           <TopTracksButton
-            onClick={currentTracksFunc}
+            onClick={() => setActive("ALL TIME")}
             className={active === "ALL TIME" ? "active" : ""}
           >
             <span>ALL TIME</span>
           </TopTracksButton>
           <TopTracksButton
-            onClick={currentTracksFunc}
-            className={active === "6 MONTHS" ? "active" : ""}
+            onClick={() => setActive("LAST 6 MONTHS")}
+            className={active === "LAST 6 MONTHS" ? "active" : ""}
           >
-            <span>6 MONTHS</span>
+            <span>LAST 6 MONTHS</span>
           </TopTracksButton>
           <TopTracksButton
-            onClick={currentTracksFunc}
-            className={active === "4 WEEKS" ? "active" : ""}
+            onClick={() => setActive("LAST 4 WEEKS")}
+            className={active === "LAST 4 WEEKS" ? "active" : ""}
           >
-            <span>4 WEEKS</span>
+            <span>LAST 4 WEEKS</span>
           </TopTracksButton>
         </SectionHeadingStyle>
         {followedArtists.length ? (
