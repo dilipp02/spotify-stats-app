@@ -11,6 +11,7 @@ import {
 } from "../spotify";
 import TopTrackSection from "./TopTracksSection";
 import { PageStyle } from "../style/PageStyle";
+import RecentlyPlayed from "./RecentlyPlayed";
 
 const Tracks = () => {
   const [savedTracks, setSavedTracks] = useState(null);
@@ -50,7 +51,7 @@ const Tracks = () => {
     shortTermTracks ? (
     <PageStyle>
       <TrackSection tracks={savedTracks} title="Saved Tracks" />
-      <TrackSection tracks={recentlyPlayed} title="Recently Played" />
+      <RecentlyPlayed tracks={recentlyPlayed} title="Recently Played" />
       <TopTrackSection
         longtermtracks={longTermTracks}
         mediumtermtracks={mediumTermTracks}

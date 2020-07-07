@@ -70,7 +70,6 @@ const PlayButton = styled.button`
 `;
 
 const Show = (props) => {
-  getShow(props.showId).then((res) => console.log(JSON.stringify(res)));
   const [show, setShow] = useState(null);
 
   useEffect(() => {
@@ -124,7 +123,7 @@ const Show = (props) => {
           >
             <SavedTracks>
               <span className="podcastIcon">
-                <i class="fas fa-podcast"></i>
+                <i className="fas fa-podcast"></i>
               </span>
               <TracksNameSection>
                 <h4>{objTrack.name}</h4>

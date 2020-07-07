@@ -5,7 +5,6 @@ import styled from "styled-components/macro";
 import { Link } from "@reach/router";
 import { getPlaylists } from "../spotify";
 import theme from "../style/theme";
-// import playlistss from "../samp/playlists.json";
 import { ArtistNames } from "../style/SpotifyBlock";
 import NoData from "./NoData";
 import PlaylistIcon from "./icons/PlaylistIcon";
@@ -50,8 +49,6 @@ export const PlaylistInfo = styled.div`
 `;
 
 const Playlists = () => {
-  // getPlaylists().then((res) => console.log(JSON.stringify(res)));
-
   const [playlists, setPlaylists] = useState(null);
 
   useEffect(() => {

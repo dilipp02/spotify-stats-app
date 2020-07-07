@@ -46,10 +46,7 @@ const FollowedArtists = (props) => {
         </SectionHeadingStyle>
         {followedArtists.length ? (
           followedArtists.map((objArtist) => (
-            <Link
-              to={`/artist/${objArtist.id}`}
-              key={objArtist.name.replace(" ", "").toLowerCase()}
-            >
+            <Link to={`/artist/${objArtist.id}`} key={objArtist.id}>
               <SectionSong>
                 <ImageDiv>
                   <img src={objArtist.images[1].url} alt={objArtist.name} />

@@ -3,7 +3,6 @@ import LoadingIndicator from "./LoadingIndicator";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 import axios from "axios";
-// import artist from "../samp/artist.json";
 import { PageStyle } from "../style/PageStyle";
 import { formatWithCommas } from "../utils";
 import {
@@ -70,7 +69,6 @@ const ArtistInfo = styled.div`
 `;
 
 const Artist = (props) => {
-  // getSavedShows().then((res) => console.log(JSON.stringify(res)));
   const [artist, setArtist] = useState(null);
   const [artistStatus, setArtistStatus] = useState(null);
 
@@ -105,7 +103,11 @@ const Artist = (props) => {
           width="350px"
         />
         <div className="flexcontainer">
-          <a href={artist.external_urls.spotify}>
+          <a
+            href={artist.external_urls.spotify}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <h1 className="title">{artist.name}</h1>
           </a>
           <button className="btn" onClick={toggleFollow}>
@@ -129,7 +131,9 @@ const Artist = (props) => {
         </div>
         <div className="flexcontainer flexcontainergenre">
           {artist.genres.map((objGenre) => (
-            <span className="value">{objGenre.toUpperCase()}</span>
+            <span className="value" key={objGenre}>
+              {objGenre.toUpperCase()}
+            </span>
           ))}
         </div>
       </ArtistInfo>

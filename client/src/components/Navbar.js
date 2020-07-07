@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Spotify from "./icons/Spotify";
-// import { Link } from "@reach/router";
 import styled from "styled-components/macro";
 import theme from "../style/theme";
 import { Link } from "@reach/router";

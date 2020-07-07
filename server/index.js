@@ -47,8 +47,6 @@ app.get("/", function (req, res) {
   res.render(path.resolve(__dirname, "../client/build/index.html"));
 });
 
-// console.log(path.resolve(__dirname, "../client/build/index.html"));
-
 app.get("/login", (req, res) => {
   const scope =
     "user-read-private user-read-email user-read-recently-played user-top-read user-follow-read user-follow-modify playlist-read-private playlist-read-collaborative playlist-modify-public user-library-read user-read-currently-playing user-modify-playback-state user-library-modify";
@@ -90,8 +88,6 @@ app.get("/callback", (req, res) => {
       if (!error && response.statusCode === 200) {
         const access_token = body.access_token;
         const refresh_token = body.refresh_token;
-
-        // we can also pass the token to the browser to make requests from there
         res.redirect(
           `${FRONTEND_URI}/#${querystring.stringify({
             access_token,

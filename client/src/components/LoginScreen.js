@@ -33,10 +33,6 @@ const LoginButton = styled.button`
 `;
 
 const LoginScreen = () => {
-  //   async function loginClicked() {
-  //     const res = fetch;
-  //   }
-
   return (
     <LoginScreenStyle>
       <LoginHeading> Welcome to Spotify Stats</LoginHeading>

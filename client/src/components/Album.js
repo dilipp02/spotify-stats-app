@@ -63,14 +63,11 @@ const PlayButton = styled.button`
 `;
 
 const Album = (props) => {
-  //   getAlbum(props.albumId).then((res) => console.log(JSON.stringify(res)));
   const [album, setAlbum] = useState(false);
 
   useEffect(() => {
     getAlbum(props.albumId).then((alb) => setAlbum(alb.data));
   }, []);
-
-  console.log(album);
 
   return album ? (
     <PageStyle>
@@ -87,8 +84,8 @@ const Album = (props) => {
           <div>
             {album.artists.map((objArtist, index) => (
               <Link
-                key={objArtist.name.replace(" ", "").toLowerCase()}
                 to={`/artist/${objArtist.id}`}
+                key={objArtist.id}
                 className="styledLink tracktitleinfo"
               >
                 <span>

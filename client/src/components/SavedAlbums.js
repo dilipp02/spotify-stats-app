@@ -50,7 +50,7 @@ const SavedAlbums = (props) => {
                   <HeadingBlock>{objTrack.album.name}</HeadingBlock>
                   {objTrack.album.artists.map((objArtist, index) => (
                     <a
-                      key={objArtist.name.replace(" ", "").toLowerCase()}
+                      key={objArtist.id}
                       href={objArtist.external_urls.spotify}
                       className="styledLink"
                       target="_blank"

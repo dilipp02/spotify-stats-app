@@ -28,7 +28,7 @@ const NoData = (props) => {
         <span>{props.desc}</span>
       </div>
       <div className="margintop">
-        <a href={props.spotifyLink}>
+        <a href={props.spotifyLink} target="_blank" rel="noopener noreferrer">
           <button className="btn">{props.btnName.toUpperCase()}</button>
         </a>
       </div>

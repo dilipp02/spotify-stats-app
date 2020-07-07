@@ -154,7 +154,7 @@ const Player = (props) => {
                 <div className="overflow">
                   {player.item.artists.map((objArtist, index) => (
                     <Link
-                      key={objArtist.name.replace(" ", "").toLowerCase()}
+                      key={objArtist.id}
                       to={`/artist/${objArtist.id}`}
                       className="styledLink artistlink"
                     >

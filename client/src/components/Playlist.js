@@ -68,7 +68,6 @@ const PlayButton = styled.button`
 `;
 
 const Playlist = (props) => {
-  //   getPlaylist(props.playlistId).then((res) => console.log(JSON.stringify(res)));
   const [playlist, setPlaylist] = useState(null);
 
   useEffect(() => {
@@ -100,7 +99,7 @@ const Playlist = (props) => {
           )}
           <div>
             <span>
-              <span class="by">BY</span> {playlist.owner.display_name}
+              <span className="by">BY</span> {playlist.owner.display_name}
             </span>
             &nbsp;&nbsp;&middot;&nbsp;&nbsp;
             <span>{formatWithCommas(playlist.followers.total)} likes</span>
@@ -132,10 +131,7 @@ const Playlist = (props) => {
       </div>
       <div>
         {playlist.tracks.items.map((objTrack) => (
-          <Link
-            to={`/track/${objTrack.track.id}`}
-            key={objTrack.track.name.replace(" ", "").toLowerCase()}
-          >
+          <Link to={`/track/${objTrack.track.id}`} key={objTrack.track.id}>
             <SavedTracks>
               <MusicIcon />
               <img
@@ -148,8 +144,8 @@ const Playlist = (props) => {
                 <h4>{objTrack.track.name}</h4>
                 {objTrack.track.artists.map((objArtist, index) => (
                   <Link
-                    key={objArtist.name.replace(" ", "").toLowerCase()}
                     to={`/artist/${objArtist.id}`}
+                    key={objArtist.id}
                     className="styledLink artistlink"
                   >
                     <span>

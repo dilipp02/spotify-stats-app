@@ -121,7 +121,6 @@ const FeatureName = styled.span`
 `;
 
 const Track = (props) => {
-  // getSavedShows().then((res) => console.log(JSON.stringify(res)));
   const [track, setTrack] = useState(null);
   const [trackAudioFeatures, setTrackAudioFeatures] = useState(null);
   const [savedTrackStatus, setSavedTrackStatus] = useState(null);
@@ -167,7 +166,7 @@ const Track = (props) => {
             {track.artists.map((objArtist, index) => (
               <Link
                 to={`/artist/${objArtist.id}`}
-                key={objArtist.name.replace(" ", "").toLowerCase()}
+                key={objArtist.id}
                 className="styledLink tracktitleinfo"
               >
                 <span>
@@ -185,7 +184,6 @@ const Track = (props) => {
           <div className="albuminfo">
             <Link
               to={`/album/${track.album.id}`}
-              key={track.album.id}
               className="styledLink albumname"
             >
               <span>{track.album.name}</span>

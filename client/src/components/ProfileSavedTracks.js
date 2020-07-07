@@ -17,10 +17,7 @@ const TrackSection = (props) => {
       <SectionHeading heading="Saved Tracks" link="/tracks" />
       {props.tracks.items.length ? (
         props.tracks.items.slice(0, 5).map((objTrack) => (
-          <Link
-            to={`/track/${objTrack.track.id}`}
-            key={objTrack.track.name.replace(" ", "").toLowerCase()}
-          >
+          <Link to={`/track/${objTrack.track.id}`} key={objTrack.track.id}>
             <SavedTracks>
               <MusicIcon />
               <img
@@ -33,8 +30,8 @@ const TrackSection = (props) => {
                 <h4>{objTrack.track.name}</h4>
                 {objTrack.track.artists.map((objArtist, index) => (
                   <Link
-                    key={objArtist.name.replace(" ", "").toLowerCase()}
                     to={`/artist/${objArtist.id}`}
+                    key={objArtist.id}
                     className="styledLink artistlink"
                   >
                     <span>

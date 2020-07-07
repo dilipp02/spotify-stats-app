@@ -30,7 +30,7 @@ const ProfileSavedAlbums = (props) => {
                 {objTrack.album.artists.map((objArtist, index) => (
                   <Link
                     to={`/artist/${objArtist.id}`}
-                    key={objArtist.name.replace(" ", "").toLowerCase()}
+                    key={objArtist.id}
                     className="styledLink"
                   >
                     <ArtistNames>

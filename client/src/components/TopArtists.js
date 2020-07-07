@@ -26,8 +26,6 @@ const ImageDiv = styled.div`
 `;
 
 const TopArtists = (props) => {
-  // getFollowedArtists().then((res) => console.log(JSON.stringify(res)));
-
   const [currentArtists, setCurrentArtists] = useState(props.longtermartists);
   const [active, setActive] = useState("ALL TIME");
 
@@ -86,10 +84,7 @@ const TopArtists = (props) => {
         </SectionHeadingStyle>
         {followedArtists.length ? (
           followedArtists.map((objArtist) => (
-            <Link
-              to={`/artist/${objArtist.id}`}
-              key={objArtist.name.replace(" ", "").toLowerCase()}
-            >
+            <Link to={`/artist/${objArtist.id}`} key={objArtist.id}>
               <SectionSong>
                 <ImageDiv>
                   <img src={objArtist.images[1].url} alt={objArtist.name} />
