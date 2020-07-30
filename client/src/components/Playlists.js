@@ -21,6 +21,10 @@ const GridDiv = styled.div`
     max-height: 100%;
     width: 100%;
     transition: ${transition};
+    @media (max-width: 376px) {
+      height: 160px;
+      width: 160px;
+    }
   }
 `;
 

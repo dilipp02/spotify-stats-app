@@ -10,16 +10,22 @@ const NavDiv = styled.div`
   display: flex;
   align-items: center;
   background-color: ${colors.black};
-  height: 100vh;
-  width: 200px;
   letter-spacing: normal;
   font-size: ${fontSize.m};
   position: fixed;
+  z-index: 1;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const NavNav = styled.nav`
   height: 100vh;
-  width: 100%;
+  width: 200px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 70px;
+  }
 `;
 
 const SpotifyLogo = styled.div`
@@ -27,6 +33,9 @@ const SpotifyLogo = styled.div`
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavbarItems = styled.ul`
@@ -36,6 +45,9 @@ const NavbarItems = styled.ul`
   height: 65%;
   align-items: center;
   padding: 0px ${spacing.m};
+  @media (max-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 const NavbarItemDiv = styled.div`
@@ -51,16 +63,31 @@ const NavbarItemDiv = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 768px) {
+    margin: 14px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 
 const NavbarIcon = styled.span`
   margin-right: 20px;
+  @media (max-width: 768px) {
+    margin-right: 0px;
+  }
 `;
 
 const GithubLogo = styled.div`
   margin-top: 64px;
   text-align: center;
+  @media (max-width: 768px) {
+    display: none;
+  }
   .btn {
     color: ${colors.fontgrey};
     background: transparent;
@@ -82,6 +109,9 @@ const Samp = styled(Link)`
   &:hover {
     color: ${colors.white};
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const isActive = ({ isCurrent }) =>
@@ -101,52 +131,42 @@ const Navbar = () => {
         <NavbarItems>
           <NavbarItemDiv>
             <NavbarItem to="/">
-              <span>
-                <NavbarIcon>
-                  <i className="fas fa-user"></i>
-                </NavbarIcon>
-                Profile
-              </span>
+              <NavbarIcon>
+                <i className="fas fa-user"></i>
+              </NavbarIcon>
+              <span>Profile</span>
             </NavbarItem>
           </NavbarItemDiv>
           <NavbarItemDiv>
             <NavbarItem to="/tracks">
-              <span>
-                <NavbarIcon>
-                  <i className="fas fa-compact-disc"></i>
-                </NavbarIcon>
-                Tracks
-              </span>
+              <NavbarIcon>
+                <i className="fas fa-compact-disc"></i>
+              </NavbarIcon>
+              <span>Tracks</span>
             </NavbarItem>
           </NavbarItemDiv>
           <NavbarItemDiv>
             <NavbarItem to="/artists">
-              <span>
-                <NavbarIcon>
-                  <i className="fas fa-microphone-alt"></i>
-                </NavbarIcon>
-                Artists
-              </span>
+              <NavbarIcon>
+                <i className="fas fa-microphone-alt"></i>
+              </NavbarIcon>
+              <span>Artists</span>
             </NavbarItem>
           </NavbarItemDiv>
           <NavbarItemDiv>
             <NavbarItem to="/playlists">
-              <span>
-                <NavbarIcon>
-                  <i className="fas fa-file-audio"></i>
-                </NavbarIcon>
-                Playlists
-              </span>
+              <NavbarIcon>
+                <i className="fas fa-file-audio"></i>
+              </NavbarIcon>
+              <span>Playlists</span>
             </NavbarItem>
           </NavbarItemDiv>
           <NavbarItemDiv>
             <NavbarItem to="/albumsandshows">
-              <span>
-                <NavbarIcon>
-                  <i className="fas fa-music"></i>
-                </NavbarIcon>
-                Albums & Shows
-              </span>
+              <NavbarIcon>
+                <i className="fas fa-music"></i>
+              </NavbarIcon>
+              <span>Albums & Shows</span>
             </NavbarItem>
           </NavbarItemDiv>
         </NavbarItems>

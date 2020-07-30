@@ -19,6 +19,9 @@ const AudioFeaturesRange = styled.div`
   .progressbar {
     width: 0%;
   }
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const AudioFeaturesRangeProgress = styled.div`

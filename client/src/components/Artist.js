@@ -22,6 +22,10 @@ const ArtistInfo = styled.div`
   img {
     border-radius: 50%;
     box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+    @media (max-width: 480px) {
+      height: 200px;
+      width: 200px;
+    }
   }
   .title {
     font-size: 48px;
@@ -30,6 +34,9 @@ const ArtistInfo = styled.div`
     &:hover {
       color: ${colors.green};
       text-decoration: none;
+    }
+    @media (max-width: 480px) {
+      font-size: 32px;
     }
   }
   .value {
@@ -44,6 +51,10 @@ const ArtistInfo = styled.div`
     justify-content: space-evenly;
     width: 100%;
     padding-top: 32px;
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   .flexcontent {
     display: flex;

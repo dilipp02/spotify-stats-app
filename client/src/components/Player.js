@@ -33,6 +33,7 @@ const PlayerStyleDiv = styled.div`
   justify-content: start;
   height: 100%;
   width: 100%;
+  align-items: center;
   .overflow {
     white-space: nowrap;
     overflow: hidden;
@@ -41,6 +42,11 @@ const PlayerStyleDiv = styled.div`
   img {
     margin-left: ${spacing.base};
     box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+    @media (max-width: 480px) {
+      height: 64px;
+      width: 64px;
+      margin-left: 0px;
+    }
   }
 `;
 
@@ -62,6 +68,9 @@ const Names = styled.div`
   .artistlink {
     color: ${colors.fontgrey};
   }
+  @media (max-width: 480px) {
+    margin-right: 0px;
+  }
 `;
 
 const LikeTrackButton = styled.button`
@@ -82,6 +91,9 @@ const LikeTrackButton = styled.button`
       color: ${colors.white};
       transform: scale(1.06);
     }
+  }
+  @media (max-width: 480px) {
+    display: none;
   }
 `;
 
@@ -114,6 +126,9 @@ const TrackProgressDiv = styled.div`
   .time {
     margin: 0px ${spacing.m};
   }
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const Player = (props) => {
@@ -121,7 +136,7 @@ const Player = (props) => {
   const [isLiked, setLike] = useState(null);
 
   useEffect(() => {
-    if (player)
+    if (player.item)
       checkSavedTracks(player.item.id).then((res) => setLike(res.data));
   }, []);
 

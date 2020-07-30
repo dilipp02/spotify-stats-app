@@ -25,6 +25,9 @@ const PageStyle = styled.div`
     color: ${colors.fontgrey};
     margin-right: ${spacing.base};
   }
+  @media (max-width: 768px) {
+    padding: 48px 32px;
+  }
 `;
 
 const TrackInfo = styled.div`
@@ -33,12 +36,21 @@ const TrackInfo = styled.div`
   align-items: center;
   .flexitem {
     margin-left: ${spacing.base};
+    @media (max-width: 480px) {
+      h6 {
+        display: none;
+      }
+    }
   }
   .tracktitle {
     font-size: 40px;
     font-weight: 900;
     letter-spacing: -0.04em;
     margin: ${spacing.xxl} 0px;
+    @media (max-width: 480px) {
+      font-size: 32px;
+      margin: ${spacing.base} 0px;
+    }
   }
   .tracktitleinfo {
     font-size: ${fontSize.l};
@@ -46,15 +58,28 @@ const TrackInfo = styled.div`
   }
   .buttons {
     margin: ${spacing.xxl} 0px;
+    @media (max-width: 480px) {
+      margin: ${spacing.base} 0px;
+    }
   }
   .by {
     font-size: ${fontSize.sm};
   }
   .desc {
     margin-top: ${spacing.xxl};
+    @media (max-width: 480px) {
+      margin-top: ${spacing.base};
+    }
   }
   img {
     box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+    @media (max-width: 480px) {
+      height: 200px;
+      width: 200px;
+    }
+  }
+  @media (max-width: 480px) {
+    flex-direction: column;
   }
 `;
 

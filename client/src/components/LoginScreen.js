@@ -15,20 +15,29 @@ const LoginScreenStyle = styled.div`
   height: 100vh;
 `;
 
-const LoginHeading = styled.h1`
+const LoginHeading = styled.span`
   font-size: 48px;
   color: ${colors.green};
   margin-bottom: 20px;
+  @media (max-width: 786px) {
+    font-size: 24px;
+  }
 `;
 
 const LoginButton = styled.button`
   background-color: ${colors.green};
   padding: 10px 30px;
+  font-size: 32px;
+  color: ${colors.white};
   &:hover {
     background-color: ${colors.highlightgreen};
   }
   &:focus {
     border: none;
+  }
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding: 4px 10px;
   }
 `;
 
@@ -38,7 +47,7 @@ const LoginScreen = () => {
       <LoginHeading> Welcome to Spotify Stats</LoginHeading>
       <a href={LOGIN_URI}>
         <LoginButton>
-          <h1>LOGIN TO SPOTIFY </h1>
+          <span>LOGIN TO SPOTIFY </span>
         </LoginButton>
       </a>
     </LoginScreenStyle>

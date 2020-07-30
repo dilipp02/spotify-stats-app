@@ -74,4 +74,9 @@ export const TopTracksButton = styled.button`
     color: ${colors.white};
     text-decoration: underline;
   }
+  @media (max-width: 376px) {
+    margin: 0px;
+    padding: 0.375rem 0.45rem;
+    font-size: 8px;
+  }
 `;

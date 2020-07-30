@@ -24,6 +24,9 @@ const PageStyle = styled.div`
   .featurestitle {
     text-align: center;
   }
+  @media (max-width: 768px) {
+    padding: 48px 32px;
+  }
 `;
 
 const TrackInfo = styled.div`
@@ -32,19 +35,32 @@ const TrackInfo = styled.div`
   align-items: center;
   .flexitem {
     margin-left: ${spacing.base};
+    @media (max-width: 480px) {
+      margin-left: 0px;
+    }
   }
   .tracktitle {
     font-size: 40px;
     font-weight: 900;
     letter-spacing: -0.04em;
     margin-bottom: ${spacing.xxl};
+    @media (max-width: 480px) {
+      font-size: 32px;
+      margin: ${spacing.base} 0px;
+    }
   }
   .tracktitleinfo {
     font-size: ${fontSize.l};
     color: ${colors.fontgrey};
+    @media (max-width: 480px) {
+      font-size: ${fontSize.base};
+    }
   }
   .albuminfo {
     margin: ${spacing.xxl} 0px;
+    @media (max-width: 480px) {
+      margin: ${spacing.base} 0px;
+    }
   }
   .albumname {
     font-size: ${fontSize.m};
@@ -52,6 +68,14 @@ const TrackInfo = styled.div`
   }
   img {
     box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
+    @media (max-width: 480px) {
+      height: 200px;
+      width: 200px;
+    }
+  }
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -63,12 +87,22 @@ const PlayButton = styled.button`
   &:hover {
     background-color: ${colors.highlightgreen};
   }
+  @media (max-width: 376px) {
+    padding: ${spacing.m} ${spacing.base};
+  }
+  @media (max-width: 330px) {
+    margin-bottom: ${spacing.base};
+  }
 `;
 
 const AudioFeaturesStyle = styled.div`
   flex: 1;
   margin-top: ${spacing.xxl};
   display: flex;
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const AudioFeaturesFirst = styled.div`
@@ -77,6 +111,10 @@ const AudioFeaturesFirst = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-right: ${spacing.xxl};
+  @media (max-width: 480px) {
+    width: 100%;
+    margin-right: 0px;
+  }
 `;
 
 const AudioFeaturesSecond = styled.div`
@@ -84,6 +122,9 @@ const AudioFeaturesSecond = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const AudioFeaturesDiv = styled.div`

@@ -20,6 +20,9 @@ const AppDiv = styled.div`
 const Content = styled.div`
   padding-left: 200px;
   width: 100%;
+  @media (max-width: 768px) {
+    padding-left: 0px;
+  }
 `;
 
 const LoggedIn = () => {

@@ -10,6 +10,10 @@ const UserInfo = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin: ${spacing.xxl};
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const UserImg = styled.div`
@@ -42,9 +46,21 @@ const UserInfoNameStats = styled.div`
       color: ${colors.green};
       text-decoration: none;
     }
+    @media (max-width: 768px) {
+      font-size: 48px;
+      margin: 16px 0px;
+    }
+    @media (max-width: 480px) {
+      font-size: 32px;
+    }
   }
   .greyfont {
     color: ${colors.fontgrey};
+  }
+  span {
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -85,7 +101,7 @@ const ProfileUserInfo = (props) => {
           <span className="greyfont">
             <Num>{props.user.followers.total}</Num> FOLLOWERS
           </span>
-          &nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&middot;&nbsp;
           <Num>{props.playlists.total}</Num>
           <Link to="/playlists" className="styledLink greyfont">
             <span>PLAYLISTS</span>
