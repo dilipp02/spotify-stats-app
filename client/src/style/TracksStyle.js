@@ -35,6 +35,11 @@ export const TracksNameSection = styled.div`
     color: ${colors.fontgrey};
     font-size: ${fontSize.sm};
   }
+  .link {
+    @media (max-width: 768px) {
+      text-decoration: underline;
+    }
+  }
   h4 {
     &:hover {
       text-decoration: underline;

@@ -40,6 +40,11 @@ export const SectionSongArtists = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   color: ${colors.fontgrey};
+  .link {
+    @media (max-width: 768px) {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const ArtistNames = styled.span`

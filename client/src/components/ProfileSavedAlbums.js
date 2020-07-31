@@ -26,14 +26,14 @@ const ProfileSavedAlbums = (props) => {
                 />
               </ImageDiv>
               <SectionSongArtists>
-                <HeadingBlock>{objTrack.album.name}</HeadingBlock>
+                <HeadingBlock className="link">{objTrack.album.name}</HeadingBlock>
                 {objTrack.album.artists.map((objArtist, index) => (
                   <Link
                     to={`/artist/${objArtist.id}`}
                     key={objArtist.id}
                     className="styledLink"
                   >
-                    <ArtistNames>
+                    <ArtistNames className="link">
                       {" "}
                       {objArtist.name}
                       {index < objTrack.album.artists.length - 1 ? (

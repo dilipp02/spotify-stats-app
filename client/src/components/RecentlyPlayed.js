@@ -49,14 +49,14 @@ const RecentlyPlayed = (props) => {
                   alt={objTrack.track.name}
                 />
                 <TracksNameSection>
-                  <h4>{objTrack.track.name}</h4>
+                  <h4 className="link">{objTrack.track.name}</h4>
                   {objTrack.track.artists.map((objArtist, index) => (
                     <Link
                       to={`/artist/${objArtist.id}`}
                       key={objArtist.id}
                       className="styledLink artistlink"
                     >
-                      <span>
+                      <span className="link">
                         {" "}
                         {objArtist.name}
                         {index < objTrack.track.artists.length - 1 ? (
@@ -72,7 +72,7 @@ const RecentlyPlayed = (props) => {
                     to={`/album/${objTrack.track.album.id}`}
                     className="styledLink artistlink"
                   >
-                    <span> {objTrack.track.album.name}</span>
+                    <span className="link"> {objTrack.track.album.name}</span>
                   </Link>
                 </TracksNameSection>
                 <TimeStyle>

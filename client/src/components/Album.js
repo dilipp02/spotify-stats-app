@@ -65,6 +65,11 @@ const TrackInfo = styled.div`
       margin: ${spacing.base} 0px;
     }
   }
+  .link {
+    @media (max-width: 768px) {
+      text-decoration: underline;
+    }
+  }
   img {
     box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
     @media (max-width: 480px) {
@@ -116,7 +121,7 @@ const Album = (props) => {
                 key={objArtist.id}
                 className="styledLink tracktitleinfo"
               >
-                <span>
+                <span className="link">
                   {" "}
                   {objArtist.name}
                   {index < album.artists.length - 1 ? (
@@ -173,14 +178,14 @@ const Album = (props) => {
                 alt={objTrack.name}
               />
               <TracksNameSection>
-                <h4>{objTrack.name}</h4>
+                <h4 className="link">{objTrack.name}</h4>
                 {objTrack.artists.map((objArtist, index) => (
                   <Link
                     key={objArtist.name.replace(" ", "").toLowerCase()}
                     to={`/artist/${objArtist.id}`}
                     className="styledLink artistlink"
                   >
-                    <span>
+                    <span className="link">
                       {" "}
                       {objArtist.name}
                       {index < objTrack.artists.length - 1 ? (

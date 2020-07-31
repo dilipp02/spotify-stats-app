@@ -15,6 +15,11 @@ const SectionHeadingStyle = styled.div`
     letter-spacing: 1.76px;
     font-size: ${fontSize.sm};
   }
+  .link {
+    @media (max-width: 768px) {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const SectionHeading = (props) => {
@@ -24,7 +29,7 @@ const SectionHeading = (props) => {
         <h2>{props.heading}</h2>
       </Link>
       <Link className="styledLink seealllink" to={props.link}>
-        <span>SEE ALL</span>
+        <span className="link">SEE ALL</span>
       </Link>
     </SectionHeadingStyle>
   );

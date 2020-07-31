@@ -66,6 +66,11 @@ const TrackInfo = styled.div`
     font-size: ${fontSize.m};
     color: ${colors.fontgrey};
   }
+  .link {
+    @media (max-width: 768px) {
+      text-decoration: underline;
+    }
+  }
   img {
     box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
     @media (max-width: 480px) {
@@ -210,7 +215,7 @@ const Track = (props) => {
                 key={objArtist.id}
                 className="styledLink tracktitleinfo"
               >
-                <span>
+                <span className="link">
                   {" "}
                   {objArtist.name}
                   {index < track.artists.length - 1 ? (
@@ -227,7 +232,7 @@ const Track = (props) => {
               to={`/album/${track.album.id}`}
               className="styledLink albumname"
             >
-              <span>{track.album.name}</span>
+              <span className="link">{track.album.name}</span>
             </Link>
             <span className="albumname">
               &nbsp;&nbsp;&middot;&nbsp;&nbsp;

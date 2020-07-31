@@ -84,14 +84,14 @@ const TopTrackSection = (props) => {
                   alt={objTrack.name}
                 />
                 <TracksNameSection>
-                  <h4>{objTrack.name}</h4>
+                  <h4 className="link">{objTrack.name}</h4>
                   {objTrack.artists.map((objArtist, index) => (
                     <Link
                       to={`/artist/${objArtist.id}`}
                       key={objArtist.id}
                       className="styledLink artistlink"
                     >
-                      <span>
+                      <span className="link">
                         {" "}
                         {objArtist.name}
                         {index < objTrack.artists.length - 1 ? (
@@ -107,7 +107,7 @@ const TopTrackSection = (props) => {
                     to={`/album/${objTrack.album.id}`}
                     className="styledLink artistlink"
                   >
-                    <span> {objTrack.album.name}</span>
+                    <span className="link"> {objTrack.album.name}</span>
                   </Link>
                 </TracksNameSection>
                 <TimeStyle>{formatDuration(objTrack.duration_ms)}</TimeStyle>

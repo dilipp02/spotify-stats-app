@@ -47,16 +47,14 @@ const SavedAlbums = (props) => {
                   />
                 </ImageDiv>
                 <SectionSongArtists>
-                  <HeadingBlock>{objTrack.album.name}</HeadingBlock>
+                  <HeadingBlock className="link">{objTrack.album.name}</HeadingBlock>
                   {objTrack.album.artists.map((objArtist, index) => (
-                    <a
+                    <Link
+                      to={`/artist/${objArtist.id}`}
                       key={objArtist.id}
-                      href={objArtist.external_urls.spotify}
                       className="styledLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
                     >
-                      <ArtistNames>
+                      <ArtistNames className="link">
                         {" "}
                         {objArtist.name}
                         {index < objTrack.album.artists.length - 1 ? (
@@ -65,7 +63,7 @@ const SavedAlbums = (props) => {
                           <span> </span>
                         )}
                       </ArtistNames>
-                    </a>
+                    </Link>
                   ))}
                 </SectionSongArtists>
               </SectionSong>

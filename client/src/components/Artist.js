@@ -77,6 +77,11 @@ const ArtistInfo = styled.div`
   .flexcontainer.flexcontainergenre {
     padding-top: 16px;
   }
+  .link {
+    @media (max-width: 768px) {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const Artist = (props) => {
@@ -119,7 +124,7 @@ const Artist = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <h1 className="title">{artist.name}</h1>
+            <h1 className="title link">{artist.name}</h1>
           </a>
           <button className="btn" onClick={toggleFollow}>
             {artistStatus ? "FOLLOWING" : "FOLLOW"}

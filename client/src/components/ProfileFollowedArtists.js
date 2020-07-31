@@ -35,7 +35,7 @@ const ProfileFollowedArtists = (props) => {
                 <img src={objArtist.images[1].url} alt={objArtist.name} />
               </ImageDiv>
               <SectionSongArtists>
-                <HeadingBlock>{objArtist.name}</HeadingBlock>
+                <HeadingBlock className="link">{objArtist.name}</HeadingBlock>
                 <ArtistNames>Artist</ArtistNames>
               </SectionSongArtists>
             </SectionSong>

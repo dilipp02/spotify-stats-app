@@ -57,6 +57,11 @@ const UserInfoNameStats = styled.div`
   .greyfont {
     color: ${colors.fontgrey};
   }
+  .link {
+    @media (max-width: 768px) {
+      text-decoration: underline;
+    }
+  }
   span {
     @media (max-width: 480px) {
       font-size: 12px;
@@ -95,7 +100,7 @@ const ProfileUserInfo = (props) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h1>{props.user.display_name}</h1>
+          <h1 className="link">{props.user.display_name}</h1>
         </a>
         <div>
           <span className="greyfont">
@@ -104,7 +109,7 @@ const ProfileUserInfo = (props) => {
           &nbsp;&nbsp;&nbsp;&middot;&nbsp;
           <Num>{props.playlists.total}</Num>
           <Link to="/playlists" className="styledLink greyfont">
-            <span>PLAYLISTS</span>
+            <span className="link">PLAYLISTS</span>
           </Link>
         </div>
       </UserInfoNameStats>

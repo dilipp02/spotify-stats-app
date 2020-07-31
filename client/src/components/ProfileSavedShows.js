@@ -34,7 +34,7 @@ const ProfileSavedShows = (props) => {
                 />
               </ImageDiv>
               <SectionSongArtists>
-                <HeadingBlock>{objTrack.show.name}</HeadingBlock>
+                <HeadingBlock className="link">{objTrack.show.name}</HeadingBlock>
                 <ArtistNames>{objTrack.show.publisher}</ArtistNames>
               </SectionSongArtists>
             </SectionSong>
