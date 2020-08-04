@@ -15,3 +15,6 @@ A web app to summarize your Spotify profile and get personalized data.
 3. `npm install`
 4. `cd client && npm install`
 5. `npm start`
+
+## Special Thanks
+Special thanks to [brittany chiang](https://github.com/bchiang7) for [Spotify Profile](https://spotify-profile.herokuapp.com/) which inspired me build my own spotify stats app.
