@@ -1,5 +1,5 @@
 # Spotify Stats App
-A web app to summarize your Spotify profile and get personalized data.
+A [web app](https://spotify-stats-application.herokuapp.com/) to summarize your Spotify profile and get personalized data. 
 
 ## Technologies used
  - Create react app
